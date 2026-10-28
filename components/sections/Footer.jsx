@@ -1,40 +1,31 @@
 import ElementorSection from '@/components/ElementorSection';
 import { SITE } from '@/config/site';
+import { SERVICES } from '@/config/services';
+import RegulatoryStatement from '@/components/compliance/RegulatoryStatement';
 
 const LEGAL_LINKS = [
-  { label: 'Privacy Policy', href: '/privacy-policy' },
-  { label: 'Terms and Conditions', href: '/terms-and-conditions' },
-  { label: 'Cookie Policy', href: '/cookie-policy' },
-  { label: 'Request Account Deletion', href: '/request-account-deletion' },
+  { label: 'Privacy policy', href: '/privacy-policy' },
+  { label: 'Terms and conditions', href: '/terms-and-conditions' },
+  { label: 'Cookie policy', href: '/cookie-policy' },
+  { label: 'Request account deletion', href: '/request-account-deletion' },
+  { label: 'Compliance', href: '/compliance' },
 ];
 
 export default function Footer() {
-  const { legal } = SITE;
-
   return (
     <ElementorSection sectionId="a1a4c99" columnId="624e515" widgetId="a77086b" widget="tp-footer" settings='{"background_background":"classic"}'>
       <footer className="footer-area section-py-80">
         <div className="container">
           <div className="footer__wrapper">
             <div className="row justify-content-center">
-              <div className="col-xl-5 col-lg-7 col-md-9 col-sm-11">
+              <div className="col-xl-8 col-lg-10">
                 <div className="footer__info text-center">
                   <div className="footer-logo">
                     <a href="/">
-                      <img decoding="async" src={SITE.logo.footer} width="200" alt={SITE.name} />
+                      <img decoding="async" src={SITE.logo.footer} height="48" alt={SITE.legalName} />
                     </a>
                   </div>
-                  <p>
-                    {legal.companyName} is incorporated in {legal.jurisdiction} (Corporation No. {legal.corporationNo}) and
-                    is registered as a Money Services Business (MSB) with the Financial Transactions and Reports Analysis
-                    Centre of Canada (FINTRAC), Registration No. {legal.msbRegistrationNo}, under the Proceeds of Crime
-                    (Money Laundering) and Terrorist Financing Act (PCMLTFA). {legal.companyName} is not authorised or
-                    registered by the Financial Conduct Authority (FCA) and is not a licensed payment service provider in
-                    the European Economic Area. Money transfer services in the EEA and United Kingdom are facilitated
-                    through regulated Licensed Partners who hold their own applicable authorisations. {SITE.name} does not
-                    hold customer funds. Past exchange rates are not indicative of future rates. {SITE.name} is intended
-                    for personal remittance use only; commercial transactions are not permitted.
-                  </p>
+                  <RegulatoryStatement />
                   <ul className="list-wrap footer__social">
                     <li>
                       <a href={SITE.social.twitter}>
@@ -56,11 +47,21 @@ export default function Footer() {
                 </div>
               </div>
             </div>
+            <nav className="bl-footer-nav" aria-label="What we do">
+              <a href="/services" className="bl-footer-nav__title">What we do</a>
+              <ul className="list-wrap">
+                {SERVICES.map((s) => (
+                  <li key={s.slug}>
+                    <a href={`/services/${s.slug}`}>{s.name}</a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
             <div className="copyright__wrapper">
               <div className="row">
                 <div className="col-md-6">
                   <div className="copyright__text">
-                    <p>Copyright © {new Date().getFullYear()} {SITE.name} – All Rights Reserved</p>
+                    <p>© {new Date().getFullYear()} {SITE.legalName}. All rights reserved.</p>
                   </div>
                 </div>
                 <div className="col-md-6">

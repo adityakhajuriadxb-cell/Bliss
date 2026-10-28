@@ -1,0 +1,21 @@
+body { margin: 0; font-family: var(--font-sans); background: var(--surface); color: var(--ink); -webkit-font-smoothing: antialiased; }
+.bl-row { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; padding: var(--space-4); }
+.bl-btn { font: inherit; font-size: 15px; font-weight: 600; height: 44px; padding: 0 var(--space-5); border-radius: var(--radius-md); border: 1.5px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; display: inline-flex; align-items: center; gap: var(--space-2); white-space: nowrap; transition: transform 160ms cubic-bezier(.2,.8,.2,1), background 160ms cubic-bezier(.2,.8,.2,1); }
+.bl-btn:hover { background: var(--mist); }
+.bl-btn:active { transform: translateX(1px); }
+.bl-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.bl-btn-primary { background: var(--mint); border-color: var(--mint); color: var(--on-mint); }
+.bl-btn-primary:hover { background: var(--mint); filter: brightness(1.05); }
+.bl-btn-ghost { border-color: transparent; }
+.bl-btn[disabled] { opacity: .45; cursor: not-allowed; }
+.bl-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; line-height: 24px; padding: 0 var(--space-2) 0 var(--space-2); border-radius: var(--radius-pill); background: var(--mist); color: var(--ink); }
+.bl-badge::before { content: ""; width: 6px; height: 6px; border-radius: var(--radius-pill); background: currentColor; }
+.bl-badge-sent { background: var(--mint-soft); color: var(--mint-text); }
+.bl-badge-pending { background: var(--pending-soft); color: var(--pending); }
+.bl-badge-failed { background: var(--danger-soft); color: var(--danger); }
+.bl-card { background: var(--surface-raised); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); padding: var(--space-5); }
+.bl-balance-label { font-size: 13px; font-weight: 500; color: var(--ink-muted); margin: 0 0 var(--space-1); }
+.bl-amount { font-family: var(--font-display); font-weight: 600; font-size: 36px; line-height: 40px; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; margin: 0; }
+.bl-amount small { font-family: var(--font-sans); font-size: 15px; font-weight: 600; color: var(--ink-muted); margin-left: var(--space-2); letter-spacing: 0; }
+.bl-ref { font-family: var(--font-mono); font-size: 13px; color: var(--ink-muted); margin: var(--space-2) 0 var(--space-4); }
+.bl-delta { color: var(--mint-text); font-size: 14px; font-weight: 500; }

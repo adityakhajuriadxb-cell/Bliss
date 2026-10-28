@@ -5,10 +5,10 @@ import { SITE } from '@/config/site';
 
 // Footer legal pages. Their text wasn't part of the saved homepage, so add your content here.
 const PAGES = {
-  'privacy-policy': { title: 'Privacy Policy', body: null },
-  'terms-and-conditions': { title: 'Terms and Conditions', body: null },
-  'cookie-policy': { title: 'Cookie Policy', body: null },
-  'request-account-deletion': { title: 'Request Account Deletion', body: null },
+  'privacy-policy': { title: 'Privacy policy', body: null },
+  'terms-and-conditions': { title: 'Terms and conditions', body: null },
+  'cookie-policy': { title: 'Cookie policy', body: null },
+  'request-account-deletion': { title: 'Request account deletion', body: null },
 };
 
 export const dynamicParams = false;

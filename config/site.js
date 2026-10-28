@@ -1,31 +1,38 @@
+import { SERVICES } from '@/config/services';
+
 // Brand settings for the whole website. Change the name here and it updates everywhere.
+// Brand rules live in docs/brand/BRAND.md: in copy the name is always "Bliss";
+// the legal name "Bliss Technology" is only for the footer and legal text.
 export const SITE = {
-  name: 'BlissTechnology',
+  name: 'Bliss',
+  legalName: 'Bliss Technology',
+  tagline: 'Money, in motion.',
   domain: 'yourbrand.com',
   url: 'https://yourbrand.com',
-  description: 'Send money without limits. Fast, secure, and low-cost transfers worldwide.',
+  description:
+    'Bliss moves money across borders to 160+ countries. See the rate and every fee before you send. Most transfers arrive in seconds.',
 
-  // Replace these image files in public/assets/images/ with your own logos (or point to new files).
+  // Outlined SVG logos from the brand kit (public/brand/logos/). Never re-type the logo.
+  // The header draws the lockup inline (components/brand/Logo.jsx) so it can animate.
   logo: {
-    header: '/assets/images/swift-logo-1.png',
-    mobileLight: '/assets/images/swift99-logo-black-1.png',
-    mobileDark: '/assets/images/cropped-swift-logo-1.png',
-    footer: '/assets/images/cropped-swift-logo-1.png',
+    footer: '/brand/logos/bliss-technology-lockup-reversed.svg', // corporate lockup next to the legal text
   },
 
   // Regulatory details shown in the footer. Fill in your own registered company details.
   legal: {
-    companyName: '[COMPANY LEGAL NAME]',
+    companyName: 'Bliss Technology',
     jurisdiction: '[PROVINCE/STATE, COUNTRY]',
     corporationNo: '[CORPORATION NO.]',
     msbRegistrationNo: '[FINTRAC MSB REGISTRATION NO.]',
   },
 
+  // `children` become a dropdown on desktop and an expandable list in the mobile menu.
   nav: [
     { label: 'Home', href: '/' },
+    { label: 'What we do', href: '/services', children: SERVICES.map((s) => ({ label: s.name, href: `/services/${s.slug}` })) },
     { label: 'About', href: '/#about' },
-    { label: 'Features', href: '/#features' },
-    { label: 'Contact', href: '/#contact' },
+    { label: 'Compliance', href: '/compliance' },
+    { label: 'FAQ', href: '/#faq' },
   ],
 
   social: {

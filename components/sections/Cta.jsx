@@ -1,3 +1,5 @@
+import { SITE } from '@/config/site';
+
 export default function Cta() {
   return (
     <section className="elementor-section elementor-top-section elementor-element elementor-element-199f5ed elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="199f5ed" data-element_type="section" data-e-type="section" id="contact" data-settings='{"background_background":"classic"}'>
@@ -7,17 +9,15 @@ export default function Cta() {
             <div className="elementor-element elementor-element-4265c51 elementor-widget elementor-widget-tp-cta" data-id="4265c51" data-element_type="widget" data-e-type="widget" data-widget_type="tp-cta.default">
               <div className="elementor-widget-container">
                 <section className="cta-area">
-                  <div className="cta-bg" style={{ backgroundImage: "url(/assets/images/Group-61.png)" }} />
                   <div className="container">
                     <div className="row justify-content-center">
-                      <div className="col-xl-6 col-lg-8">
-                        <div className="cta__content text-center">
-                          <img decoding="async" src="/assets/images/circle-01.png" width="24" alt="" style={{ top: "0%", left: "-16%" }} />
-                          <img decoding="async" src="/assets/images/dollar-new.png" width="48" alt="" style={{ bottom: "16%", left: "-8%" }} />
-                          <img decoding="async" src="/assets/images/ethereum-02.png" width="40" alt="" style={{ top: "0%", right: "-16%" }} />
-                          <img decoding="async" src="/assets/images/x.png" width="24" alt="" style={{ bottom: "16%", right: "-8%" }} />
-                          <h2 className="title">Get the App Now</h2>
-                          <a href="#" target="_blank" rel="nofollow" className="btn gradient-btn">{" "}Launching Soon{" "}</a>
+                      <div className="col-xl-7 col-lg-9">
+                        <div className="cta__content text-center" data-anime="opacity:[0, 1]; translateX:[-24, 0]; onview: true; delay: 100;">
+                          <h2 className="title">Get the {SITE.name} app</h2>
+                          <p className="desc">
+                            We're launching soon. One account, 160+ countries, and every fee shown before you send.
+                          </p>
+                          <span className="bl-pill">App launching soon</span>
                         </div>
                       </div>
                     </div>

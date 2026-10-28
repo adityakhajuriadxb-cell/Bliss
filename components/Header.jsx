@@ -4,22 +4,36 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import anime from 'animejs';
 import { SITE } from '@/config/site';
+import Logo from '@/components/brand/Logo';
 
-// Same smooth scroll as the original theme: 1s easeInOutExpo, stopping just above the section.
+// Smooth scroll with the brand ease (fast in, gentle settle), stopping just above the section.
 function smoothScrollTo(top) {
   const offset = window.innerWidth < 768 ? 30 : 50;
   const scroller = document.scrollingElement;
+  const target = Math.max(0, top - offset);
   anime.remove(scroller);
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    scroller.scrollTop = target;
+    return;
+  }
   anime({
     targets: scroller,
-    scrollTop: Math.max(0, top - offset),
-    duration: 1000,
-    easing: 'easeInOutExpo',
+    scrollTop: target,
+    duration: 600,
+    easing: 'cubicBezier(0.2, 0.8, 0.2, 1)',
   });
+}
+
+// The current page's top-level item: "/" only on the homepage, otherwise a path prefix.
+// Hash links (/#about) are sections of the homepage, so they are never marked current.
+function isCurrent(pathname, href) {
+  if (href === '/') return pathname === '/';
+  return !href.includes('#') && pathname.startsWith(href);
 }
 
 function NavLinks({ onNavigate }) {
   const pathname = usePathname();
+  const [openItem, setOpenItem] = useState(null);
 
   const handleClick = (event, href) => {
     onNavigate?.();
@@ -30,6 +44,7 @@ function NavLinks({ onNavigate }) {
       smoothScrollTo(0);
       return;
     }
+    if (!href.startsWith('/#')) return;
     const target = document.querySelector(href.slice(1));
     if (target) {
       event.preventDefault();
@@ -39,13 +54,43 @@ function NavLinks({ onNavigate }) {
 
   return (
     <ul className="navigation">
-      {SITE.nav.map((item, i) => (
-        <li key={item.href} className={`menu-item${i === 0 ? ' current-menu-item' : ''}`}>
-          <a href={item.href} aria-current={i === 0 ? 'page' : undefined} onClick={(e) => handleClick(e, item.href)}>
-            {item.label}
-          </a>
-        </li>
-      ))}
+      {SITE.nav.map((item) => {
+        const current = isCurrent(pathname, item.href);
+        const open = openItem === item.href;
+        const classes = ['menu-item', item.children && 'menu-item-has-children', current && 'current-menu-item']
+          .filter(Boolean)
+          .join(' ');
+        return (
+          <li key={item.href} className={classes}>
+            <a href={item.href} aria-current={current ? 'page' : undefined} onClick={(e) => handleClick(e, item.href)}>
+              {item.label}
+            </a>
+            {item.children && (
+              <>
+                {/* Mobile menu only; the theme hides this on desktop, where the list opens on hover. */}
+                <button
+                  type="button"
+                  className={`dropdown-btn${open ? ' open' : ''}`}
+                  aria-expanded={open}
+                  aria-label={`Show ${item.label} pages`}
+                  onClick={() => setOpenItem(open ? null : item.href)}
+                >
+                  <span className="plus-line" />
+                </button>
+                <ul className={`sub-menu${open ? ' is-open' : ''}`}>
+                  {item.children.map((child) => (
+                    <li key={child.href} className={pathname === child.href ? 'current-menu-item' : undefined}>
+                      <a href={child.href} aria-current={pathname === child.href ? 'page' : undefined} onClick={onNavigate}>
+                        {child.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </li>
+        );
+      })}
     </ul>
   );
 }
@@ -81,10 +126,10 @@ export default function Header() {
                 <nav className="tgmenu__nav">
                   <div className="logo">
                     <a className="light-logo" href="/">
-                      <img src={SITE.logo.header} style={{ maxWidth: 200 }} alt={SITE.name} />
+                      <Logo tone="reversed" label={SITE.name} />
                     </a>
                     <a className="dark-logo" href="/">
-                      <img src={SITE.logo.header} style={{ maxWidth: 200 }} alt={SITE.name} />
+                      <Logo tone="reversed" label={SITE.name} />
                     </a>
                   </div>
                   <div className="tgmenu__navbar-wrap tgmenu__main-menu d-none d-lg-flex">
@@ -93,7 +138,7 @@ export default function Header() {
                   <div className="tgmenu__action">
                     <ul className="list-wrap">
                       <li className="header-btn">
-                        <button className="btn border-btn">Launching Soon</button>
+                        <span className="bl-pill">App launching soon</span>
                       </li>
                     </ul>
                   </div>
@@ -107,10 +152,10 @@ export default function Header() {
                   </div>
                   <div className="nav-logo">
                     <a className="light-logo" href="/">
-                      <img src={SITE.logo.mobileLight} style={{ maxWidth: 200 }} alt={SITE.name} />
+                      <Logo tone="primary" label={SITE.name} />
                     </a>
                     <a className="dark-logo" href="/">
-                      <img src={SITE.logo.mobileDark} style={{ maxWidth: 200 }} alt={SITE.name} />
+                      <Logo tone="reversed" label={SITE.name} />
                     </a>
                   </div>
                   <div className="tgmobile__menu-outer">

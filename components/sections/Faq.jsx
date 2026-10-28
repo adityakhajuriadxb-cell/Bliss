@@ -6,27 +6,27 @@ import ElementorSection from '@/components/ElementorSection';
 const FAQS = [
   {
     q: 'How long does a transfer take?',
-    a: 'Most transfers are completed within minutes, depending on the destination country and payment method.',
+    a: 'Most transfers arrive in seconds. Some take longer, depending on the country and the receiving bank. If yours does, we tell you why and when to expect it.',
   },
   {
-    q: 'Is my money safe with your platform?',
-    a: 'Yes, all transactions are protected with advanced encryption and secure banking partners.',
+    q: 'Is my money protected?',
+    a: 'Yes. Every transfer is encrypted and checked for fraud, and we work with regulated banking partners.',
   },
   {
-    q: 'Are there any hidden charges?',
-    a: 'No, we follow transparent pricing so you always see the exact fees before confirming a transfer.',
+    q: 'Are there hidden fees?',
+    a: 'No. You see the rate and every fee before you confirm. The fee you see is the fee you pay.',
   },
   {
-    q: 'Which countries do you support?',
-    a: 'We support transfers to 100+ countries worldwide with expanding coverage every month.',
+    q: 'Which countries can I send to?',
+    a: 'You can send to 160+ countries, and we add more every month.',
   },
   {
     q: 'Can I track my transfer?',
-    a: 'Yes, you can track every transfer in real-time directly from your dashboard or app.',
+    a: 'Yes. Follow every transfer live in the app, from the moment you send to the moment it lands.',
   },
   {
-    q: 'What payment methods are accepted?',
-    a: 'We support multiple options including bank transfers, cards, and local payment methods depending on region.',
+    q: 'How can I pay?',
+    a: 'Pay by bank transfer, card or a local payment method. The options depend on your country.',
   },
 ];
 
@@ -34,21 +34,19 @@ export default function Faq() {
   const [open, setOpen] = useState(null);
 
   return (
-    <ElementorSection sectionId="ca64bed" columnId="43b90d3" widgetId="f7fa6af" widget="tp-faq">
+    <ElementorSection id="faq" sectionId="ca64bed" columnId="43b90d3" widgetId="f7fa6af" widget="tp-faq">
       <section className="faq-area faq-style-two faq-style-three">
         <div className="container">
-          <div className="row justify-content-center" data-anime="opacity:[0, 1]; translateY:[24, 0]; onview: true; delay: 100;">
+          <div className="row justify-content-center" data-anime="opacity:[0, 1]; translateX:[-24, 0]; onview: true; delay: 100;">
             <div className="col-xl-8 col-lg-10">
               <div className="section__title text-center title-mb-75">
-                <h2 className="title text-uppercase">
-                  Frequently Asked <span className="tg-text-gradient">Questions</span>
-                </h2>
-                <p className="desc">Everything you need to know about sending money globally with our platform.</p>
+                <h2 className="title">Questions, answered</h2>
+                <p className="desc">What you need to know before you send.</p>
               </div>
             </div>
           </div>
           <div className="row align-items-center justify-content-center">
-            <div className="col-xl-6 col-lg-8">
+            <div className="col-xl-8 col-lg-10">
               <div className="faq__wrapper">
                 <div className="accordion" id="accordionFaq">
                   {FAQS.map((item, i) => {
@@ -79,11 +77,6 @@ export default function Faq() {
                     );
                   })}
                 </div>
-              </div>
-            </div>
-            <div className="col-xl-6 col-lg-8">
-              <div className="faq__img">
-                <img decoding="async" src="/assets/images/faqss-1-scaled.png" alt="" />
               </div>
             </div>
           </div>

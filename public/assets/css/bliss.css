@@ -1,0 +1,3268 @@
+/*
+ * Bliss brand layer. Applies the brand kit (public/brand/tokens.css + components.css)
+ * to the Nerko/Elementor theme. Loaded last. Rules: docs/brand/BRAND.md.
+ *
+ * Colour proportion 60 · 25 · 10 · 5: surfaces, navy, mint, state colours.
+ * Mint is a fill for one primary action per screen; mint text uses --mint-text.
+ */
+
+:root {
+  --on-navy-muted: rgba(255, 255, 255, 0.72);
+  --on-navy-line: rgba(255, 255, 255, 0.14);
+
+  /* Map the theme's own variables onto brand tokens. */
+  --tg-theme-primary: var(--mint-text);
+  --tg-theme-secondary: var(--mint);
+  --tg-gradient-1: var(--mint);
+  --tg-gradient-2: var(--mint);
+  --tg-heading-color: var(--ink);
+  --tg-body-color: var(--ink-muted);
+  --tg-heading-font-family: var(--font-display);
+  --tg-body-font-family: var(--font-sans);
+  --tg-body-font-size: 16px;
+  --tg-body-line-height: 1.5;
+  --tg-border-1: var(--line);
+  --tg-border-2: var(--line);
+}
+
+/* ---------- Base type ---------- */
+
+body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--ink-muted);
+  background: var(--surface);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+p {
+  color: var(--ink-muted);
+}
+
+a {
+  color: var(--link);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Sentence case everywhere. */
+.text-uppercase,
+.section__title .sub-title,
+.roadmap__step span {
+  text-transform: none !important;
+}
+
+/* Amounts and numbers line up. */
+.bl-amount,
+.bl-recent__amount,
+.roadmap__percent,
+.bl-timeline time {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Section titles (display 40/46, heading 28/34) ---------- */
+
+.section__title .title {
+  font-size: 40px;
+  line-height: 46px;
+  letter-spacing: -0.015em;
+}
+
+.section__title .desc {
+  font-size: 18px;
+  line-height: 26px;
+  margin-top: var(--space-4);
+}
+
+.section__title .sub-title {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin-bottom: var(--space-3);
+}
+
+.tg-text-gradient {
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  color: var(--mint-text);
+}
+
+.title-mb-80 {
+  margin-bottom: var(--space-8);
+}
+
+.title-mb-75 {
+  margin-bottom: var(--space-7);
+}
+
+@media (max-width: 767.98px) {
+  .section__title .title {
+    font-size: 32px;
+    line-height: 38px;
+  }
+}
+
+/* ---------- Section backgrounds ---------- */
+
+/* Navy bands: hero, transfer banner, the closing CTA and the footer. */
+.elementor-24 .elementor-element.elementor-element-4956fbe:not(.elementor-motion-effects-element-type-background),
+.elementor-24 .elementor-element.elementor-element-61ba82e:not(.elementor-motion-effects-element-type-background),
+.elementor-24 .elementor-element.elementor-element-c0edf2e:not(.elementor-motion-effects-element-type-background),
+.elementor-24 .elementor-element.elementor-element-199f5ed:not(.elementor-motion-effects-element-type-background),
+.elementor-24 .elementor-element.elementor-element-40fe03b:not(.elementor-motion-effects-element-type-background),
+.elementor-24 .elementor-element.elementor-element-a1a4c99:not(.elementor-motion-effects-element-type-background),
+.elementor-element.elementor-element-a1a4c99 {
+  background-color: var(--navy);
+}
+
+/* Calm surfaces between them, alternating ground and raised. */
+.elementor-24 .elementor-element.elementor-element-f3e2df5:not(.elementor-motion-effects-element-type-background),
+.elementor-24 .elementor-element.elementor-element-eec87ac:not(.elementor-motion-effects-element-type-background),
+.elementor-24 .elementor-element.elementor-element-ca64bed:not(.elementor-motion-effects-element-type-background),
+.elementor-24 .elementor-element.elementor-element-a2596a3:not(.elementor-motion-effects-element-type-background) {
+  background-color: var(--surface-raised);
+}
+
+.elementor-24 .elementor-element.elementor-element-acaa241:not(.elementor-motion-effects-element-type-background),
+.elementor-24 .elementor-element.elementor-element-4f9e22e:not(.elementor-motion-effects-element-type-background),
+.elementor-24 .elementor-element.elementor-element-7eb6f7b:not(.elementor-motion-effects-element-type-background) {
+  background-color: var(--surface);
+}
+
+.elementor-24 .elementor-element.elementor-element-3a8d245 {
+  background-color: var(--mist);
+}
+
+/* The closing CTA sits flush with the footer band. */
+.elementor-24 .elementor-element.elementor-element-40fe03b {
+  margin-top: 0;
+}
+
+/* Text on navy. */
+.elementor-24 .elementor-element.elementor-element-e0f2df0 .tg-content .title,
+.elementor-24 .elementor-element.elementor-element-464e671 .tg-content .title,
+.cta-area .cta__content .title {
+  color: var(--on-navy);
+}
+
+.elementor-24 .elementor-element.elementor-element-e0f2df0 .tg-content p,
+.elementor-24 .elementor-element.elementor-element-464e671 .tg-content p,
+.cta-area .cta__content .desc {
+  color: var(--on-navy-muted);
+}
+
+/* ---------- Header ---------- */
+
+.tg-header__area,
+.tg-header__area .container,
+.tg-header__area .row,
+.tg-header__area .col-12 {
+  background-color: var(--navy);
+}
+
+.sticky-menu {
+  background: var(--navy);
+  border-bottom: 1px solid var(--on-navy-line);
+  animation: blSlideDown var(--duration-base) var(--ease-bliss) both;
+}
+
+@keyframes blSlideDown {
+  from { transform: translateY(-100%); }
+  to { transform: none; }
+}
+
+.tg-header__area .logo .bl-logo,
+.sticky-menu .logo .bl-logo {
+  height: 32px;
+  width: auto;
+}
+
+.tgmenu__navbar-wrap ul li a {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--on-navy-muted);
+  text-transform: none;
+  transition: color var(--duration-fast) var(--ease-bliss);
+}
+
+.tgmenu__navbar-wrap > ul > li.active a,
+.tgmenu__navbar-wrap > ul > li:hover a,
+.tgmenu__navbar-wrap > ul > li.current-menu-item > a {
+  color: var(--on-navy);
+}
+
+.tg-header__area .mobile-nav-toggler {
+  color: var(--on-navy);
+}
+
+/* Mobile menu: a raised light sheet. */
+.tgmobile__menu-box {
+  background: var(--surface-raised);
+}
+
+.tgmobile__menu-box::before {
+  background: var(--mint);
+}
+
+.tgmobile__menu .navigation li > a {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* ---------- Buttons and pills ---------- */
+
+.bl-btn {
+  text-decoration: none;
+}
+
+.bl-btn .bl-icon {
+  transition: transform var(--duration-fast) var(--ease-bliss);
+}
+
+.bl-btn:hover .bl-icon {
+  transform: translateX(2px);
+}
+
+.bl-btn-lg {
+  height: 52px;
+  padding: 0 var(--space-6);
+  font-size: 16px;
+}
+
+.bl-btn-primary,
+.bl-btn-primary:hover {
+  color: var(--on-mint);
+}
+
+/* A status label, not a button: there is nothing to press until launch. */
+.bl-pill {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  border: 1px solid currentColor;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--on-navy-muted);
+  white-space: nowrap;
+}
+
+.bl-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* ---------- Hero ---------- */
+
+.banner__content .title {
+  font-size: 56px;
+  line-height: 60px;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-5);
+}
+
+.banner__content .desc {
+  font-size: 18px;
+  line-height: 28px;
+  max-width: 34em;
+  margin-bottom: var(--space-6);
+}
+
+@media (max-width: 991.98px) {
+  .banner__content .title {
+    font-size: 40px;
+    line-height: 46px;
+  }
+}
+
+/* ---------- Brand cards ---------- */
+
+.bl-card p {
+  color: inherit;
+}
+
+.bl-card .bl-balance-label {
+  color: var(--ink-muted);
+}
+
+.bl-card .bl-amount {
+  color: var(--ink);
+}
+
+.bl-card .bl-ref {
+  color: var(--ink-muted);
+}
+
+.bl-timeline__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.bl-timeline__title {
+  margin: 0;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 600;
+  color: var(--ink) !important;
+}
+
+.bl-timeline__steps {
+  list-style: none;
+  margin: 0;
+  padding: var(--space-4) 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.bl-timeline__steps li {
+  display: grid;
+  grid-template-columns: 20px 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--ink);
+}
+
+.bl-timeline__steps time {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+
+.bl-icon--done {
+  color: var(--mint-text);
+}
+
+.bl-recent-wrap {
+  max-width: 480px;
+  margin: 0 0 0 auto; /* sits on the grid's right edge, like the hero cards */
+}
+
+.bl-recent__title {
+  margin: 0 0 var(--space-2);
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 600;
+  color: var(--ink) !important;
+}
+
+.bl-recent ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bl-recent li {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  grid-template-areas:
+    'avatar name badge'
+    'avatar amount badge';
+  column-gap: var(--space-3);
+  align-items: center;
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--line);
+}
+
+.bl-recent li:first-child {
+  border-top: 0;
+}
+
+.bl-recent__avatar {
+  grid-area: avatar;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--mist);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.bl-recent__name {
+  grid-area: name;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.bl-recent__amount {
+  grid-area: amount;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.bl-recent__amount small {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+
+.bl-recent .bl-badge {
+  grid-area: badge;
+}
+
+/* ---------- Speed band and dot globe ---------- */
+
+.bl-speed-band {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.bl-speed-band--light .bl-sb-base { fill: var(--navy); }
+.bl-speed-band--light .bl-sb-soft { fill: var(--line); }
+.bl-speed-band--dark .bl-sb-base { fill: rgba(255, 255, 255, 0.16); }
+.bl-speed-band--dark .bl-sb-soft { fill: rgba(255, 255, 255, 0.07); }
+.bl-speed-band .bl-sb-mint { fill: var(--mint); }
+
+.bl-dot-globe {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.bl-dot-globe .bl-dot { fill: var(--line); }
+.bl-dot-globe .bl-dot-market { fill: var(--mint); }
+
+.section-divider .bl-speed-band {
+  margin: 0 auto;
+  width: 96px;
+}
+
+/* ---------- About ---------- */
+
+.bl-panel {
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.about__content > p {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.about__icon-box .icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  background: var(--mist) !important;
+  color: var(--ink);
+}
+
+.about__icon-box p {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* ---------- Transfer banner ---------- */
+
+.banner-style-four .banner__content .title {
+  font-size: 40px;
+  line-height: 46px;
+  letter-spacing: -0.015em;
+  margin-bottom: var(--space-5);
+}
+
+.banner-style-four .banner__content .desc {
+  max-width: none;
+}
+
+.banner-style-four .bl-speed-band {
+  width: 96px;
+}
+
+@media (max-width: 991.98px) {
+  .banner-style-four .banner__content {
+    margin-bottom: var(--space-7);
+  }
+
+  .banner-style-four .banner__content .title {
+    font-size: 32px;
+    line-height: 38px;
+  }
+}
+
+/* ---------- Features ---------- */
+
+div.mint__item {
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-6);
+  margin-bottom: var(--space-5);
+  align-items: flex-start;
+}
+
+div.mint__icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-right: var(--space-5);
+  border-radius: var(--radius-md);
+  background: var(--mist);
+  color: var(--ink);
+}
+
+div.mint__content .title,
+.choose__item-content .title {
+  font-size: 22px;
+  line-height: 28px;
+  margin: 0 0 var(--space-2);
+  letter-spacing: -0.01em;
+}
+
+div.mint__content .desc,
+.choose__item-content p {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* ---------- App banner ---------- */
+
+.bl-band-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bl-band-bg .bl-speed-band {
+  position: absolute;
+  width: 280px;
+  opacity: 0.9;
+}
+
+.bl-band-bg__left {
+  left: -40px;
+  top: var(--space-7);
+}
+
+.bl-band-bg__right {
+  right: -60px;
+  bottom: var(--space-7);
+}
+
+.banner-style-two {
+  min-height: 0;
+  isolation: isolate;
+}
+
+.banner-style-two .banner__background-wrap {
+  min-height: 0;
+  height: 100%;
+}
+
+.banner__content-two .title,
+.elementor-24 .elementor-element.elementor-element-6580072 .tg-content .title {
+  font-size: 48px;
+  line-height: 54px;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.banner__content-two .desc,
+.elementor-24 .elementor-element.elementor-element-6580072 .tg-content p {
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--ink-muted);
+}
+
+@media (max-width: 991.98px) {
+  .bl-band-bg { display: none; }
+
+  .banner__content-two .title {
+    font-size: 36px;
+    line-height: 42px;
+  }
+}
+
+/* ---------- Why choose us ---------- */
+
+.choose-style-two .choose__item {
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  height: 100%;
+}
+
+.choose__item-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin: 0 0 var(--space-5);
+  border-radius: var(--radius-md);
+  background: var(--mist);
+  color: var(--ink);
+  font-size: inherit;
+}
+
+/* ---------- Roadmap ---------- */
+
+.roadmap__card {
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.roadmap__card p {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.roadmap__heading {
+  font-size: 22px;
+  line-height: 28px;
+}
+
+.roadmap__wrapper-two::after {
+  background-color: var(--line);
+}
+
+.roadmap__card.style-two::after {
+  background: var(--mint);
+  border-color: var(--surface);
+}
+
+.roadmap__percent {
+  flex-direction: row;
+  width: auto;
+  height: 28px;
+  padding: 0 var(--space-3);
+  margin: var(--space-5);
+  border-radius: var(--radius-pill);
+  transform: none;
+  background: var(--mist);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.roadmap__percent > span {
+  font-size: inherit;
+}
+
+.roadmap__step span {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mint-text);
+}
+
+/* ---------- FAQ ---------- */
+
+.faq-style-three .faq__wrapper {
+  margin-right: 0;
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: none;
+}
+
+.faq__wrapper .accordion-item:not(:first-child) {
+  border-top-color: var(--line);
+}
+
+.faq__wrapper .accordion-button {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.faq__wrapper .accordion-button:not(.collapsed) {
+  color: var(--ink);
+}
+
+.faq__wrapper .accordion-body p {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* ---------- CTA ---------- */
+
+.cta__content .title {
+  font-size: 48px;
+  line-height: 54px;
+  letter-spacing: -0.02em;
+  margin: var(--space-5) 0 var(--space-4);
+}
+
+.cta__content .desc {
+  font-size: 18px;
+  line-height: 28px;
+  margin: 0 0 var(--space-6);
+}
+
+@media (max-width: 767.98px) {
+  .cta__content .title {
+    font-size: 36px;
+    line-height: 42px;
+  }
+}
+
+/* ---------- Footer ---------- */
+
+.footer-logo img {
+  height: 48px;
+  width: auto;
+}
+
+.footer__info p {
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--on-navy-muted);
+}
+
+.copyright__wrapper {
+  border-top-color: var(--on-navy-line);
+}
+
+.copyright__text p,
+.copyright__menu ul a {
+  font-size: 13px;
+  color: var(--on-navy-muted);
+}
+
+.copyright__menu ul a:hover {
+  color: var(--on-navy);
+}
+
+/* ---------- Small screens: the theme centres text, so centre what sits with it ---------- */
+
+@media (max-width: 991.98px) {
+  .bl-actions {
+    justify-content: center;
+  }
+
+  .banner-style-four .bl-speed-band {
+    margin: 0 auto;
+  }
+
+  div.mint__icon {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .bl-panel {
+    padding: var(--space-3);
+  }
+}
+
+/* ---------- Legal pages ---------- */
+
+.section-py-80 .section__title .title {
+  color: var(--ink);
+}
+
+/* ---------- Navigation dropdown ---------- */
+
+.tgmenu__navbar-wrap ul li .sub-menu {
+  min-width: 260px;
+  padding: var(--space-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-card);
+  transition: opacity var(--duration-fast) var(--ease-bliss), transform var(--duration-fast) var(--ease-bliss), visibility var(--duration-fast);
+}
+
+.tgmenu__navbar-wrap ul li .sub-menu li a {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.tgmenu__navbar-wrap ul li .sub-menu li a:hover,
+.tgmenu__navbar-wrap ul li .sub-menu li.current-menu-item a {
+  background: var(--mist);
+  color: var(--ink);
+}
+
+/* The theme capitalises every word in menus; the brand uses sentence case. */
+.tgmenu__navbar-wrap ul li .sub-menu li a,
+.tgmobile__menu .navigation li > a,
+.tgmobile__menu .navigation ul li ul li > a {
+  text-transform: none;
+}
+
+.tgmobile__menu .navigation li > ul.is-open {
+  display: block;
+}
+
+.tgmobile__menu .navigation li.menu-item-has-children .dropdown-btn {
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: var(--mist);
+}
+
+.tgmobile__menu .navigation li.menu-item-has-children .dropdown-btn.open {
+  background: var(--navy);
+}
+
+.tgmobile__menu .navigation ul li ul li > a,
+.tgmobile__menu .navigation li ul li > a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+
+/* ---------- Inner pages ---------- */
+
+.bl-page-hero {
+  padding: 176px 0 var(--space-8);
+  background: var(--navy);
+  overflow: hidden;
+}
+
+.bl-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+  margin: 0 0 var(--space-5);
+  padding: 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--on-navy-muted);
+}
+
+.bl-crumbs li + li::before {
+  content: '/';
+  margin-right: var(--space-2);
+  color: var(--on-navy-line);
+}
+
+.bl-crumbs a {
+  color: var(--on-navy-muted);
+  text-decoration: none;
+}
+
+.bl-crumbs a:hover {
+  color: var(--on-navy);
+}
+
+.bl-crumbs [aria-current] {
+  color: var(--on-navy);
+}
+
+/* Eyebrow label with a short mint bar: mint as a fill, never as text on navy. */
+.bl-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--on-navy-muted) !important;
+}
+
+.bl-eyebrow::before {
+  content: '';
+  width: 16px;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--mint);
+}
+
+.bl-eyebrow--ink {
+  color: var(--mint-text) !important;
+}
+
+.bl-page-hero__title {
+  margin: 0 0 var(--space-5);
+  font-size: 48px;
+  line-height: 54px;
+  letter-spacing: -0.02em;
+  color: var(--on-navy);
+}
+
+.bl-page-hero__intro {
+  max-width: 36em;
+  margin: 0 0 var(--space-6);
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--on-navy-muted) !important;
+}
+
+.bl-page-hero__band {
+  width: 360px;
+  margin-left: auto;
+}
+
+/* ---------- Illustration parts ---------- */
+
+.bl-mono {
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+
+.bl-paycard {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 1.586;
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+}
+
+.bl-paycard__chip {
+  width: 40px;
+  height: 30px;
+  margin-top: var(--space-4);
+  border-radius: var(--radius-sm);
+  background: var(--mist);
+  border: 1px solid var(--line);
+}
+
+.bl-paycard__number {
+  margin: auto 0 var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink) !important;
+}
+
+.bl-paycard__foot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+
+.bl-paycard__band {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+  width: 72px;
+}
+
+.bl-dot-globe {
+  overflow: visible;
+}
+
+.bl-dot-globe .bl-dot-route {
+  fill: none;
+  stroke: var(--mint);
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-dasharray: 6 4;
+}
+
+/* ---------- App UI inside portal pages ---------- */
+
+.bl-mini-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.bl-mini-field__label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink-muted);
+}
+
+.bl-mini-field__value {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.bl-mini-field__value.bl-mono {
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.bl-mini-field__value small {
+  margin-left: var(--space-1);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--ink-muted);
+}
+
+.bl-mini-line {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.bl-mini-line span:last-child {
+  color: var(--ink);
+  font-weight: 500;
+  text-align: right;
+}
+
+.bl-mini-line.is-strong {
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--line);
+}
+
+.bl-mini-line.is-strong span:last-child {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.bl-mini-check {
+  display: grid;
+  grid-template-columns: 16px 1fr auto;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--ink);
+}
+
+.bl-mini-check .bl-icon {
+  color: var(--mint-text);
+}
+
+.bl-mini-check__ring {
+  width: 14px;
+  height: 14px;
+  border: 1.75px solid var(--line);
+  border-radius: var(--radius-pill);
+}
+
+.bl-mini-check time {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-muted);
+}
+
+.bl-mini-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.bl-mini-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--navy);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--on-navy);
+}
+
+.bl-mini-progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.bl-mini-progress__track {
+  display: block;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--mist);
+  overflow: hidden;
+}
+
+.bl-mini-progress__fill {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--mint);
+}
+
+.bl-mini-progress__label,
+.bl-mini-note {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink-muted) !important;
+}
+
+.bl-mini-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.bl-mini-chips span {
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-sm);
+  background: var(--mist);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Web portal window ---------- */
+
+/* A container, so the sidebar can fold to icons when the window itself is narrow. */
+.bl-portal {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  aspect-ratio: 520 / 440;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--surface-raised);
+  box-shadow:
+    inset 0 0 0 1px rgba(11, 31, 58, 0.08),
+    0 2px 4px rgba(3, 10, 22, 0.2),
+    0 40px 80px rgba(3, 10, 22, 0.45);
+  container-type: inline-size;
+}
+
+.bl-portal__chrome {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--space-3);
+  height: 36px;
+  padding: 0 var(--space-3);
+  border-bottom: 1px solid var(--line);
+  background: var(--mist);
+}
+
+.bl-portal__dots {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.bl-portal__dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(11, 31, 58, 0.16);
+}
+
+.bl-portal__address {
+  display: inline-flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  max-width: 240px;
+  height: 22px;
+  margin: 0 auto;
+  border-radius: var(--radius-pill);
+  background: var(--surface-raised);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+
+.bl-portal__frame {
+  display: grid;
+  flex: 1;
+  grid-template-columns: 132px 1fr;
+  min-height: 0;
+}
+
+.bl-portal__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 10px;
+  border-right: 1px solid var(--line);
+  background: var(--surface-raised);
+}
+
+/* Doubled class: the theme's `.elementor img { height: auto }` would otherwise win. */
+.bl-portal .bl-portal__logo {
+  align-self: flex-start;
+  width: 79px;
+  height: 18px;
+  margin: 2px 6px 14px;
+}
+
+.bl-portal__nav span {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 7px 8px;
+  border-radius: 8px;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+.bl-portal__nav b {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.bl-portal__nav .is-active {
+  background: var(--mist);
+  color: var(--ink);
+}
+
+.bl-portal__main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  padding: 14px 16px 40px;
+  background: var(--surface);
+}
+
+.bl-portal__title {
+  flex: none;
+  margin: 0 0 12px;
+  font-family: var(--font-display);
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink) !important;
+}
+
+/* The page clips at its own edge, keeping the bottom 40px clear for float B. */
+.bl-portal__body,
+.bl-portal__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+}
+
+.bl-portal__body {
+  flex: 1;
+  overflow: hidden;
+}
+
+@container (max-width: 460px) {
+  .bl-portal__frame {
+    grid-template-columns: 52px 1fr;
+  }
+
+  .bl-portal .bl-portal__logo {
+    width: 22px;
+    height: 22px;
+    object-fit: cover;
+    object-position: left;
+    margin: 2px auto 14px;
+  }
+
+  .bl-portal__nav span {
+    justify-content: center;
+  }
+
+  .bl-portal__nav b {
+    display: none;
+  }
+}
+
+/* Faint placeholder rows: the rest of the app, without inventing content. */
+.bl-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 14px;
+  background: var(--surface-raised);
+  opacity: 0.7;
+}
+
+.bl-skeleton span {
+  height: 10px;
+  border-radius: var(--radius-pill);
+  background: var(--mist);
+}
+
+.bl-skeleton span:nth-child(1) { width: 60%; }
+.bl-skeleton span:nth-child(2) { width: 85%; }
+.bl-skeleton span:nth-child(3) { width: 40%; }
+
+/* ---------- App UI ---------- */
+
+.bl-app-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 14px;
+  background: var(--surface-raised);
+  box-shadow: 0 1px 2px rgba(11, 31, 58, 0.06);
+}
+
+.bl-app-amount {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bl-app-amount__value {
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.bl-app-amount__value small {
+  margin-left: var(--space-1);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--ink-muted);
+}
+
+.bl-app-recipient {
+  flex-direction: row;
+  align-items: center;
+}
+
+.bl-app-recipient strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.bl-app-recipient small {
+  display: block;
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+
+.bl-app-avatar {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--mist);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.bl-app-list,
+.bl-app-balances {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bl-app-list li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    'name amount'
+    'ref badge';
+  gap: 2px var(--space-2);
+  align-items: center;
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--line);
+}
+
+.bl-app-list li:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.bl-app-list__name {
+  grid-area: name;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.bl-app-list__ref {
+  grid-area: ref;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-muted);
+}
+
+.bl-app-list__amount {
+  grid-area: amount;
+  justify-self: end;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.bl-app-list__amount small {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  color: var(--ink-muted);
+}
+
+.bl-app-list .bl-badge {
+  grid-area: badge;
+  justify-self: end;
+  font-size: 11px;
+  line-height: 20px;
+}
+
+.bl-app-balances li {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  gap: var(--space-2);
+  align-items: center;
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--line);
+}
+
+.bl-app-balances__code {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  border-radius: var(--radius-sm);
+  background: var(--mist);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink);
+}
+
+.bl-app-balances__name {
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+
+.bl-app-balances__amount {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Floating cards beside the portal. A deeper shadow so they lift off the navy. */
+.bl-chip-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--surface-raised);
+  box-shadow: 0 2px 4px rgba(3, 10, 22, 0.12), 0 18px 40px rgba(3, 10, 22, 0.35);
+}
+
+.bl-chip-card .bl-mini-progress {
+  align-self: stretch;
+}
+
+.bl-chip-card__text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--ink) !important;
+}
+
+.bl-chip-card__sub {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-muted) !important;
+}
+
+/* ---------- Homepage hero globe ---------- */
+
+/* Centred with transform, so the parallax `translate` composes on top of it. */
+.bl-hero-globe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  width: min(1120px, 96vw);
+  transform: translate(-50%, -50%);
+  opacity: 0.45; /* a quiet hint of reach, behind everything */
+  pointer-events: none;
+}
+
+.bl-hero-globe .bl-dot-globe .bl-dot {
+  r: 1.2px;
+  fill: rgba(255, 255, 255, 0.12);
+}
+
+.bl-hero-globe .bl-dot-globe .bl-dot-market {
+  r: 1.8px;
+}
+
+/* Scaled up this far, strokes would thicken; keep the routes hairline and quiet so the
+   headline reads first. */
+.bl-hero-globe .bl-dot-globe .bl-dot-route {
+  vector-effect: non-scaling-stroke;
+  stroke-width: 1.5;
+  opacity: 0.6;
+}
+
+@media (max-width: 991.98px) {
+  .bl-hero-globe {
+    top: 300px;
+    width: 160vw;
+  }
+}
+
+#home > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Service hero stage ---------- */
+
+.bl-stage {
+  position: relative;
+  max-width: 560px;
+  margin-left: auto;
+  padding: 0 0 96px 40px;
+}
+
+.bl-stage__backdrop {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  left: -24px;
+  opacity: 0.5;
+}
+
+.bl-stage__window {
+  position: relative;
+  z-index: 1;
+}
+
+.bl-stage__backdrop .bl-speed-band {
+  width: 100%;
+}
+
+.bl-stage__float {
+  position: absolute;
+  z-index: 2;
+  width: 232px;
+}
+
+/* Float A covers only the portal's sidebar (window starts at 40px; the sidebar is
+   132px). Float B starts 36px above the window's bottom edge (the stage's 96px bottom
+   padding + 36px), inside the page's empty 40px bottom margin, so no content is hidden.
+   They step down and to the right, leaning forward like the mark. */
+.bl-stage__float--a {
+  top: 150px;
+  left: 0;
+  width: 168px;
+}
+
+.bl-stage__float--b {
+  top: calc(100% - 132px);
+  right: 24px;
+  width: 260px;
+}
+
+.bl-stage .bl-paycard {
+  max-width: none;
+  padding: var(--space-4);
+  box-shadow: 0 2px 4px rgba(3, 10, 22, 0.12), 0 18px 40px rgba(3, 10, 22, 0.35);
+}
+
+.bl-stage .bl-paycard__number {
+  font-size: 12px;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.bl-stage .bl-paycard__band {
+  top: var(--space-4);
+  right: var(--space-4);
+  width: 56px;
+}
+
+.bl-stage__caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 40px;
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--on-navy-muted) !important;
+}
+
+.bl-dot-globe--dark .bl-dot {
+  fill: rgba(255, 255, 255, 0.14);
+}
+
+/* ---------- Scroll story (How it works) ---------- */
+
+.bl-scrolly__device {
+  position: sticky;
+  top: 112px;
+  padding-bottom: var(--space-6);
+}
+
+.bl-scrolly__device .bl-portal__main {
+  padding-bottom: 16px;
+}
+
+.bl-scrolly__screens {
+  position: relative;
+  flex: 1;
+}
+
+.bl-scrolly__screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  translate: -16px 0;
+  pointer-events: none;
+  transition: opacity var(--duration-base) var(--ease-bliss), translate var(--duration-base) var(--ease-bliss);
+}
+
+.bl-scrolly[data-active='0'] .bl-scrolly__screen:nth-child(1),
+.bl-scrolly[data-active='1'] .bl-scrolly__screen:nth-child(2),
+.bl-scrolly[data-active='2'] .bl-scrolly__screen:nth-child(3) {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.bl-scrolly__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bl-scrolly__step {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 72vh;
+  transition: opacity var(--duration-base) var(--ease-bliss);
+}
+
+/* With the script running, steps out of view dim so the one in view leads. */
+.bl-scrolly[data-scrolly-ready] .bl-scrolly__step {
+  opacity: 0.3;
+}
+
+.bl-scrolly[data-active='0'] .bl-scrolly__step:nth-child(1),
+.bl-scrolly[data-active='1'] .bl-scrolly__step:nth-child(2),
+.bl-scrolly[data-active='2'] .bl-scrolly__step:nth-child(3) {
+  opacity: 1;
+}
+
+.bl-scrolly__num {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+
+.bl-scrolly__num::before {
+  content: '';
+  width: 32px;
+  height: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--mint);
+}
+
+.bl-scrolly__step h3 {
+  margin: var(--space-4) 0 var(--space-3);
+  font-size: 32px;
+  line-height: 38px;
+  letter-spacing: -0.015em;
+}
+
+.bl-scrolly__step > p {
+  max-width: 28em;
+  margin: 0;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.bl-scrolly__inline {
+  display: none;
+}
+
+/* ---------- Credentials strip ---------- */
+
+.bl-trust {
+  padding: var(--space-6) 0;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-raised);
+}
+
+.bl-trust__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5) var(--space-7);
+}
+
+.bl-trust__label {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ink-muted) !important;
+}
+
+.bl-trust__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5) var(--space-7);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bl-trust__list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.bl-trust__mark {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--mist);
+  color: var(--ink);
+}
+
+.bl-trust__list strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.bl-trust__list small {
+  display: block;
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+
+.bl-trust__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--mint-text);
+  text-decoration: none;
+}
+
+/* ---------- Licence cards ---------- */
+
+.bl-licence {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - var(--space-5));
+  min-height: 280px;
+  margin-bottom: var(--space-5);
+  padding: var(--space-6);
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--navy);
+  box-shadow: 0 2px 4px rgba(3, 10, 22, 0.12), 0 20px 48px rgba(3, 10, 22, 0.25);
+}
+
+.bl-licence__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+}
+
+.bl-licence__region {
+  padding: 4px var(--space-3);
+  border: 1px solid var(--on-navy-line);
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--on-navy-muted);
+}
+
+.bl-licence__authority {
+  margin: 0 0 var(--space-1);
+  font-size: 26px;
+  line-height: 32px;
+  letter-spacing: -0.01em;
+  color: var(--on-navy);
+}
+
+.bl-licence .bl-licence__title {
+  margin: 0 0 var(--space-2);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--on-navy);
+}
+
+.bl-licence .bl-licence__detail {
+  margin: 0 0 var(--space-5);
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--on-navy-muted);
+}
+
+.bl-licence .bl-licence__ref {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: auto 0 0;
+  padding-right: 88px; /* clear of the speed band */
+  overflow-wrap: anywhere;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--on-navy);
+}
+
+.bl-licence__ref span {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--on-navy-muted);
+}
+
+.bl-licence__band {
+  position: absolute;
+  right: var(--space-6);
+  bottom: var(--space-6);
+  width: 72px;
+}
+
+.bl-licence--light {
+  background: var(--surface-raised);
+}
+
+.bl-licence--light .bl-licence__region {
+  border-color: var(--line);
+  color: var(--ink-muted);
+}
+
+.bl-licence--light .bl-licence__authority,
+.bl-licence--light .bl-licence__title,
+.bl-licence--light .bl-licence__ref {
+  color: var(--ink);
+}
+
+.bl-licence--light .bl-licence__detail,
+.bl-licence--light .bl-licence__ref span {
+  color: var(--ink-muted);
+}
+
+/* Hero: the credentials stacked, each a step further right, like the mark's lean. */
+.bl-licence-stack {
+  position: relative;
+  max-width: 540px;
+  height: 560px;
+  margin-left: auto;
+}
+
+.bl-licence-stack__item {
+  position: absolute;
+  width: 340px;
+}
+
+.bl-licence-stack__item:nth-child(1) { top: 0; left: 0; }
+.bl-licence-stack__item:nth-child(2) { top: 130px; left: 100px; }
+.bl-licence-stack__item:nth-child(3) { top: 260px; left: 200px; }
+
+.bl-licence-stack .bl-licence {
+  height: auto;
+  margin: 0;
+}
+
+.bl-legal-text {
+  font-size: 15px;
+  line-height: 26px;
+}
+
+.bl-concern {
+  padding: var(--space-6);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface-raised);
+}
+
+.bl-concern h3 {
+  margin: var(--space-4) 0 var(--space-2);
+  font-size: 22px;
+  line-height: 28px;
+}
+
+.bl-concern__mail {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Phones, stages and stories on small screens ---------- */
+
+/* Laptop widths: the column is narrower than the stage, so keep one float, narrower. */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .bl-stage__float--a {
+    display: none;
+  }
+
+  .bl-stage__float--b {
+    width: 220px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .bl-stage {
+    margin: var(--space-7) auto 0;
+  }
+
+  .bl-scrolly__device {
+    display: none;
+  }
+
+  .bl-scrolly__inline {
+    display: flex;
+    aspect-ratio: auto;
+    margin: 0 0 var(--space-5);
+  }
+
+  .bl-scrolly__inline .bl-portal__main {
+    padding-bottom: 16px;
+  }
+
+  .bl-scrolly__step,
+  .bl-scrolly[data-scrolly-ready] .bl-scrolly__step {
+    min-height: 0;
+    padding: var(--space-6) 0;
+    opacity: 1;
+  }
+
+  .bl-scrolly__step h3 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .bl-trust__inner {
+    justify-content: flex-start;
+  }
+
+  .bl-licence-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    height: auto;
+    margin: var(--space-7) 0 0;
+  }
+
+  .bl-licence-stack__item {
+    position: static;
+    width: 100%;
+    translate: none !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .bl-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    padding: 0;
+  }
+
+  .bl-stage__window {
+    width: 100%;
+  }
+
+  .bl-stage .bl-portal {
+    aspect-ratio: auto;
+  }
+
+  .bl-stage .bl-portal__main {
+    padding-bottom: 16px;
+  }
+
+  .bl-stage__backdrop,
+  .bl-stage__float--a {
+    display: none;
+  }
+
+  .bl-stage__float,
+  .bl-stage__caption {
+    position: static;
+    margin: 0;
+    translate: none !important;
+  }
+
+  .bl-stage__float--b {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* ---------- Page sections ---------- */
+
+.bl-section {
+  padding: 96px 0;
+  background: var(--surface);
+}
+
+.bl-section--raised {
+  background: var(--surface-raised);
+}
+
+.bl-section__head {
+  max-width: 640px;
+  margin: 0 auto var(--space-7);
+  text-align: center;
+}
+
+.bl-section__head h2 {
+  margin: 0;
+  font-size: 40px;
+  line-height: 46px;
+  letter-spacing: -0.015em;
+}
+
+.bl-section__head p:not(.bl-eyebrow) {
+  margin: var(--space-4) 0 0;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.bl-section__head--start {
+  margin: 0 0 var(--space-5);
+  text-align: left;
+}
+
+.bl-section__head--start h2 {
+  font-size: 28px;
+  line-height: 34px;
+}
+
+.bl-section__foot {
+  margin-top: var(--space-6);
+  text-align: center;
+}
+
+/* ---------- Service showcase (homepage) ---------- */
+
+/* The list on the left, the open service's portal page on the right. */
+.bl-showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--space-7);
+  text-align: left;
+}
+
+.bl-showcase__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bl-showcase__item {
+  position: relative;
+  border-bottom: 1px solid var(--line);
+}
+
+.bl-showcase__item h3 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.bl-showcase__item button {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: 20px 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink-muted);
+  text-align: left;
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-bliss);
+}
+
+.bl-showcase__item button:hover,
+.bl-showcase__item.is-open button {
+  color: var(--ink);
+}
+
+/* Opens by animating its row from 0 to its own height. */
+.bl-showcase__detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--duration-base) var(--ease-bliss);
+}
+
+.bl-showcase__item.is-open .bl-showcase__detail {
+  grid-template-rows: 1fr;
+}
+
+.bl-showcase__detail > div {
+  min-height: 0;
+  overflow: hidden;
+  padding-left: 34px;
+}
+
+.bl-showcase__detail p {
+  margin: 0 0 var(--space-3);
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--ink-muted);
+}
+
+.bl-showcase__detail a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: 20px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--mint-text);
+  text-decoration: none;
+}
+
+.bl-showcase__detail a .bl-icon {
+  transition: transform var(--duration-fast) var(--ease-bliss);
+}
+
+.bl-showcase__detail a:hover .bl-icon {
+  transform: translateX(3px);
+}
+
+/* Under the open item: a solid line, or, while the list moves on by itself, a mint
+   bar filling toward the next service. Hovering or focusing the showcase pauses it. */
+.bl-showcase__bar {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+}
+
+.bl-showcase__bar i {
+  display: block;
+  height: 100%;
+  background: var(--ink);
+  transform-origin: left;
+}
+
+.bl-showcase.is-auto .bl-showcase__bar i {
+  background: var(--mint);
+  animation: blShowcaseBar 6s linear both;
+}
+
+.bl-showcase.is-auto:hover .bl-showcase__bar i,
+.bl-showcase.is-auto:focus-within .bl-showcase__bar i {
+  animation-play-state: paused;
+}
+
+@keyframes blShowcaseBar {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* The stage: the portal page sits flush with its right edge and runs off the bottom,
+   so every amount stays in view. */
+.bl-showcase__stage {
+  position: relative;
+  min-height: 520px;
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--navy);
+}
+
+.bl-showcase__band {
+  position: absolute;
+  bottom: 40px;
+  left: -40px;
+  width: 70%;
+  opacity: 0.25;
+}
+
+.bl-showcase__screen {
+  position: absolute;
+  top: 56px;
+  right: 0;
+  left: 56px;
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity var(--duration-base) var(--ease-bliss), transform var(--duration-base) var(--ease-bliss);
+}
+
+.bl-showcase__screen[data-active] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Flush to the right edge, so only the top-left corner is rounded. */
+.bl-showcase__screen .bl-portal,
+.bl-tile__screen .bl-portal {
+  border-radius: 14px 0 0 0;
+}
+
+.bl-showcase__caption {
+  position: absolute;
+  top: 18px;
+  left: 56px;
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--on-navy-muted) !important;
+}
+
+@media (max-width: 991.98px) {
+  .bl-showcase {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
+  }
+
+  /* The stage comes first, so a tap on the list changes what's just above it. */
+  .bl-showcase__stage {
+    order: -1;
+    min-height: 0;
+    aspect-ratio: 6 / 5;
+  }
+
+  .bl-showcase__screen {
+    top: 48px;
+    left: 24px;
+  }
+
+  .bl-showcase__caption {
+    left: 24px;
+  }
+}
+
+/* ---------- Service tiles (/services) ---------- */
+
+.bl-bento {
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+}
+
+.bl-bento__head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--space-4);
+  align-items: baseline;
+  max-width: 640px;
+  margin-bottom: var(--space-6);
+}
+
+.bl-bento__index {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mint-text);
+}
+
+.bl-bento__head h2 {
+  margin: 0;
+  font-size: 32px;
+  line-height: 38px;
+  letter-spacing: -0.015em;
+}
+
+.bl-bento__head p {
+  grid-column: 2;
+  margin: var(--space-2) 0 0;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--ink-muted);
+}
+
+.bl-bento__grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.bl-bento__grid--lead-stack .bl-tile--lead { grid-column: span 8; grid-row: span 2; }
+.bl-bento__grid--lead-stack .bl-tile--small { grid-column: span 4; }
+.bl-bento__grid--lead-side .bl-tile--lead { grid-column: span 7; }
+.bl-bento__grid--lead-side .bl-tile--small { grid-column: span 5; }
+.bl-bento__grid--wide .bl-tile--lead { grid-column: span 12; min-height: 480px; }
+
+/* No borders: size and surface carry the hierarchy. Leads are navy, the rest mist. */
+.bl-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 40px;
+  border-radius: 24px;
+  background: var(--mist);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.bl-tile:hover {
+  color: var(--ink);
+}
+
+.bl-tile__text {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 300px;
+}
+
+.bl-tile__audience {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+
+.bl-tile__name {
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 34px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.bl-tile__summary {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--ink-muted);
+}
+
+.bl-tile__more {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--mint-text);
+}
+
+.bl-tile__more .bl-icon {
+  transition: transform var(--duration-fast) var(--ease-bliss);
+}
+
+.bl-tile:hover .bl-tile__more .bl-icon {
+  transform: translateX(3px);
+}
+
+.bl-tile--lead {
+  min-height: 560px;
+  background: var(--navy);
+}
+
+.bl-tile--lead,
+.bl-tile--lead:hover,
+.bl-tile--lead .bl-tile__name {
+  color: var(--on-navy);
+}
+
+.bl-tile--lead .bl-tile__audience,
+.bl-tile--lead .bl-tile__summary {
+  color: var(--on-navy-muted);
+}
+
+.bl-tile--lead .bl-tile__text {
+  max-width: 440px;
+}
+
+.bl-tile--lead .bl-tile__more {
+  color: var(--on-navy);
+}
+
+.bl-tile--lead .bl-tile__more .bl-icon {
+  color: var(--mint);
+}
+
+/* The portal page fills the rest of the tile below the text, flush with its right
+   edge and running off the bottom; the tile crops what doesn't fit. */
+.bl-tile__screen {
+  flex: 1 0 280px;
+  min-height: 0;
+  margin: var(--space-6) -40px -40px 0;
+}
+
+/* The wide tile has room for text and page side by side. */
+@media (min-width: 992px) {
+  .bl-bento__grid--wide .bl-tile__text {
+    max-width: 380px;
+  }
+
+  .bl-bento__grid--wide .bl-tile__screen {
+    position: absolute;
+    top: 64px;
+    right: 0;
+    width: 640px;
+    margin: 0;
+  }
+}
+
+.bl-tile__screen .bl-portal,
+.bl-tile__chips > * {
+  transition: transform var(--duration-base) var(--ease-bliss);
+}
+
+.bl-tile:hover .bl-tile__screen .bl-portal {
+  transform: translateY(-6px);
+}
+
+/* Small tiles: the moment the service lands, as cards at the bottom, each a step
+   further right. */
+.bl-tile--small {
+  min-height: 268px;
+}
+
+.bl-tile__chips {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: auto;
+  padding-top: var(--space-5);
+}
+
+.bl-tile__chips > * {
+  width: 260px;
+  max-width: 100%;
+}
+
+.bl-tile__chips > :nth-child(2) {
+  margin-left: 32px;
+}
+
+.bl-tile--small .bl-chip-card {
+  box-shadow: var(--shadow-card);
+}
+
+.bl-tile:hover .bl-tile__chips > * {
+  transform: translateX(6px);
+}
+
+.bl-tile:hover .bl-tile__chips > :nth-child(2) {
+  transition-delay: 40ms;
+}
+
+/* Stacked beside a lead there's room for one card: the moment it lands. */
+.bl-bento__grid--lead-stack .bl-tile__chips > :first-child {
+  display: none;
+}
+
+.bl-bento__grid--lead-stack .bl-tile__chips > :nth-child(2) {
+  margin-left: 0;
+}
+
+@media (max-width: 991.98px) {
+  .bl-bento {
+    gap: 64px;
+  }
+
+  .bl-bento__grid > .bl-tile--lead,
+  .bl-bento__grid--lead-side .bl-tile--small {
+    grid-column: span 12;
+    grid-row: auto;
+  }
+
+  .bl-bento__grid--lead-stack .bl-tile--small {
+    grid-column: span 6;
+  }
+
+  .bl-tile--lead,
+  .bl-bento__grid--wide .bl-tile--lead {
+    min-height: 0;
+  }
+
+  .bl-tile__text {
+    max-width: 480px;
+  }
+
+  .bl-tile__screen {
+    translate: none !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .bl-bento__grid--lead-stack .bl-tile--small {
+    grid-column: span 12;
+  }
+
+  .bl-tile {
+    padding: var(--space-5);
+  }
+
+  .bl-tile__name {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .bl-tile__screen {
+    flex-basis: 220px;
+    margin: var(--space-5) -24px -24px 0;
+  }
+}
+
+/* ---------- Service rows (More from Bliss) ---------- */
+
+.bl-service-rows {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.bl-service-rows li {
+  border-bottom: 1px solid var(--line);
+}
+
+.bl-service-row {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 4fr) minmax(0, 6fr) 32px;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-5) var(--space-4);
+  color: var(--ink);
+  text-decoration: none;
+  transition: background-color var(--duration-fast) var(--ease-bliss);
+}
+
+.bl-service-row:hover {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.bl-service-row__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--mist);
+}
+
+.bl-service-row__name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.bl-service-row__summary {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--ink-muted);
+}
+
+.bl-service-row__arrow {
+  display: inline-flex;
+  justify-self: end;
+  transition: transform var(--duration-fast) var(--ease-bliss);
+}
+
+.bl-service-row:hover .bl-service-row__arrow {
+  transform: translateX(6px);
+}
+
+@media (max-width: 767.98px) {
+  .bl-service-row {
+    grid-template-columns: 48px minmax(0, 1fr) 24px;
+    gap: var(--space-1) var(--space-4);
+    padding: var(--space-4) 0;
+  }
+
+  .bl-service-row__icon {
+    grid-row: span 2;
+  }
+
+  .bl-service-row__summary {
+    grid-column: 2;
+    font-size: 15px;
+    line-height: 22px;
+  }
+
+  .bl-service-row__arrow {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+  }
+}
+
+.bl-feature h3 {
+  margin: var(--space-3) 0 var(--space-2);
+  font-size: 22px;
+  line-height: 28px;
+  letter-spacing: -0.01em;
+}
+
+.bl-feature p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.bl-feature {
+  height: 100%;
+  padding: var(--space-6);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.row > * > .bl-feature {
+  margin-bottom: var(--space-5);
+  height: calc(100% - var(--space-5));
+}
+
+.bl-feature__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--mist);
+  color: var(--ink);
+}
+
+.bl-feature h3 {
+  font-size: 20px;
+  line-height: 26px;
+  margin-top: var(--space-4);
+}
+
+.bl-uses {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bl-uses li {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--line);
+}
+
+.bl-uses .bl-icon {
+  flex: none;
+  margin-top: 2px;
+}
+
+.bl-uses h3 {
+  margin: 0 0 var(--space-1);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.bl-uses p {
+  margin: 0;
+}
+
+.bl-faq details {
+  border-top: 1px solid var(--line);
+}
+
+.bl-faq details:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.bl-faq summary {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  list-style: none;
+  cursor: pointer;
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.bl-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.bl-faq summary::after {
+  content: '+';
+  flex: none;
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+
+.bl-faq details[open] summary::after {
+  content: '−';
+}
+
+.bl-faq details p {
+  margin: 0 0 var(--space-4);
+}
+
+.bl-cta-band {
+  padding: 96px 0;
+  background: var(--navy);
+}
+
+.bl-cta-band__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-7);
+}
+
+.bl-cta-band__title {
+  margin: 0 0 var(--space-3);
+  font-size: 40px;
+  line-height: 46px;
+  letter-spacing: -0.015em;
+  color: var(--on-navy);
+}
+
+.bl-cta-band__text {
+  margin: 0 0 var(--space-5);
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--on-navy-muted) !important;
+}
+
+.bl-cta-band__band {
+  flex: none;
+  width: 280px;
+}
+
+/* How the services fit together. */
+.bl-platform {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.bl-platform__col {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.bl-platform__title {
+  margin: 0 0 var(--space-1);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ink-muted);
+}
+
+.bl-platform__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color var(--duration-fast) var(--ease-bliss);
+}
+
+.bl-platform__item:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.bl-platform__item strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.bl-platform__item small {
+  display: block;
+  font-size: 13px;
+  color: var(--on-navy-muted);
+}
+
+.bl-platform__col.is-hub .bl-platform__item {
+  padding: var(--space-6) var(--space-5);
+  border-color: var(--navy);
+  background: var(--navy);
+  color: var(--on-navy);
+}
+
+.bl-platform__arrow {
+  position: absolute;
+  top: 50%;
+  right: calc(-1 * var(--space-8) / 2);
+  transform: translate(50%, -50%);
+  color: var(--ink-muted);
+}
+
+/* ---------- Footer links ---------- */
+
+.bl-footer-nav {
+  margin: var(--space-7) 0 0;
+  text-align: center;
+}
+
+.bl-footer-nav__title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--on-navy);
+  text-decoration: none;
+}
+
+.bl-footer-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2) var(--space-5);
+  margin: var(--space-3) 0 0;
+}
+
+.bl-footer-nav a:not(.bl-footer-nav__title) {
+  font-size: 14px;
+  color: var(--on-navy-muted);
+  text-decoration: none;
+}
+
+.bl-footer-nav a:hover {
+  color: var(--on-navy);
+}
+
+/* ---------- Inner pages on small screens ---------- */
+
+@media (max-width: 991.98px) {
+  .bl-page-hero {
+    padding-top: 144px;
+  }
+
+  .bl-page-hero__title {
+    font-size: 36px;
+    line-height: 42px;
+  }
+
+  .bl-page-hero__band {
+    display: none;
+  }
+
+  .bl-section {
+    padding: 64px 0;
+  }
+
+  .bl-section__head h2,
+  .bl-cta-band__title {
+    font-size: 32px;
+    line-height: 38px;
+  }
+
+  .bl-cta-band__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .bl-cta-band__band {
+    display: none;
+  }
+
+  .bl-platform {
+    grid-template-columns: 1fr;
+    gap: var(--space-7);
+  }
+
+  .bl-platform__arrow {
+    top: auto;
+    bottom: calc(-1 * var(--space-7) / 2);
+    right: 50%;
+    transform: translate(50%, 50%) rotate(90deg);
+  }
+
+  .bl-uses {
+    margin-bottom: var(--space-7);
+  }
+}
+
+/* ---------- One grid, one rhythm ---------- */
+
+/* `overflow: clip` still hides sideways overflow but, unlike the theme's `hidden`,
+   doesn't create a scroll container, so `position: sticky` keeps working. */
+.fix {
+  overflow: clip;
+}
+
+/* Every homepage section: 96px top and bottom (64px on small screens). */
+.elementor-24 .elementor-element.elementor-element-f3e2df5,
+.elementor-24 .elementor-element.elementor-element-acaa241,
+.elementor-24 .elementor-element.elementor-element-eec87ac,
+.elementor-24 .elementor-element.elementor-element-7eb6f7b,
+.elementor-24 .elementor-element.elementor-element-ca64bed,
+.banner-style-four,
+.banner-style-two,
+.cta-area {
+  padding: 96px 0;
+}
+
+/* The transfer banner nested a boxed Elementor container inside .container,
+   pushing its content off the grid. Let .container alone set the width. */
+.elementor-24 .elementor-element.elementor-element-c0edf2e {
+  --padding-top: 0px;
+  --padding-bottom: 0px;
+  --padding-left: 0px;
+  --padding-right: 0px;
+  --content-width: 100%;
+}
+
+.elementor-element-c0edf2e > .e-con-inner {
+  max-width: none;
+  padding: 0;
+}
+
+/* Why choose us: cards sit on one line, not staggered. */
+.choose__item-lists > *,
+.choose__item-lists > *:nth-child(even) {
+  margin: 0 0 var(--space-5);
+}
+
+/* Roadmap: cards fill each half of the grid, meeting the centre line at its dots. */
+@media (min-width: 992px) {
+  .roadmap__card.style-two {
+    max-width: calc(50% - 30px);
+  }
+}
+
+/* Footer: one baseline for the copyright line and the legal links. */
+.copyright__text p,
+.copyright__menu ul {
+  margin: 0;
+}
+
+.copyright__wrapper .row {
+  align-items: center;
+}
+
+/* Footer: legal links end on the grid's right edge. */
+@media (min-width: 768px) {
+  .copyright__menu ul {
+    justify-content: flex-end;
+  }
+}
+
+/* ---------- Scroll story ---------- */
+
+.bl-story__intro {
+  position: sticky;
+  top: 120px;
+  padding-bottom: var(--space-6);
+}
+
+.bl-story__intro h2 {
+  margin: 0 0 var(--space-4);
+  font-size: 48px;
+  line-height: 54px;
+  letter-spacing: -0.02em;
+}
+
+.bl-story__intro p:not(.bl-eyebrow) {
+  max-width: 26em;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+.bl-story__band {
+  width: 96px;
+  margin-top: var(--space-6);
+}
+
+.bl-story__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bl-story__item {
+  position: relative;
+  padding: var(--space-7) var(--space-6);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-card);
+}
+
+.bl-story__num {
+  position: absolute;
+  top: var(--space-6);
+  right: var(--space-6);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+
+.bl-story__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: var(--space-6);
+  border-radius: var(--radius-md);
+  background: var(--mist);
+  color: var(--ink);
+}
+
+.bl-story__item h3 {
+  margin: 0 0 var(--space-3);
+  font-size: 28px;
+  line-height: 34px;
+  letter-spacing: -0.01em;
+}
+
+.bl-story__item p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+/* ---------- Bands that open to full width as they arrive ---------- */
+
+/* --reveal goes 0 → 1 on scroll (SiteEffects.jsx). Without JS, or with reduced
+   motion, it stays at 1: the band is simply full width. */
+[data-scroll-reveal] {
+  clip-path: inset(0 calc((1 - var(--reveal, 1)) * 48px) round calc((1 - var(--reveal, 1)) * 32px));
+}
+
+/* ---------- Grid and story on small screens ---------- */
+
+@media (max-width: 991.98px) {
+  .elementor-24 .elementor-element.elementor-element-f3e2df5,
+  .elementor-24 .elementor-element.elementor-element-acaa241,
+  .elementor-24 .elementor-element.elementor-element-eec87ac,
+  .elementor-24 .elementor-element.elementor-element-7eb6f7b,
+  .elementor-24 .elementor-element.elementor-element-ca64bed,
+  .banner-style-four,
+  .banner-style-two,
+  .cta-area {
+    padding: 64px 0;
+  }
+
+  .bl-story__intro {
+    position: static;
+    margin-bottom: var(--space-6);
+    padding-bottom: 0;
+  }
+
+  .bl-story__intro h2 {
+    font-size: 32px;
+    line-height: 38px;
+  }
+
+  .bl-story__item {
+    padding: var(--space-6) var(--space-5);
+  }
+
+  .bl-story__item h3 {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  [data-scroll-reveal] {
+    clip-path: none;
+  }
+}
+
+/* ---------- Logo in motion ---------- */
+
+/* The two blocks slide in from the left on load. Then, every 8 seconds and on hover,
+   they pass through: out to the right, back in from the left, like money moving. The
+   speed cut, the lean and the colours never change; nothing rotates or bounces.
+   Reduced motion (below) settles them in place. */
+.bl-logo {
+  display: block;
+  width: auto;
+  height: 32px;
+  overflow: visible;
+}
+
+.bl-logo--reversed .bl-logo__vault,
+.bl-logo--reversed .bl-logo__word {
+  fill: #ffffff;
+}
+
+.bl-logo--primary .bl-logo__vault,
+.bl-logo--primary .bl-logo__word {
+  fill: #0b1f3a;
+}
+
+.bl-logo__motion {
+  fill: #00c389;
+}
+
+.bl-logo__vault {
+  animation:
+    blLogoIn var(--duration-base) var(--ease-bliss) both,
+    blLogoPass 8s var(--ease-bliss) 3s infinite;
+}
+
+.bl-logo__motion {
+  animation:
+    blLogoIn var(--duration-base) var(--ease-bliss) 80ms both,
+    blLogoPass 8s var(--ease-bliss) 3.08s infinite;
+}
+
+.bl-logo__word {
+  animation: blLogoFade 320ms var(--ease-bliss) 120ms both;
+}
+
+a:hover > .bl-logo .bl-logo__vault {
+  animation: blLogoPassOnce 520ms var(--ease-bliss);
+}
+
+a:hover > .bl-logo .bl-logo__motion {
+  animation: blLogoPassOnce 520ms var(--ease-bliss) 80ms both;
+}
+
+@keyframes blLogoIn {
+  from { transform: translateX(-8px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+@keyframes blLogoFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* The pass takes the last ~0.6s of each 8s cycle; the rest is stillness. */
+@keyframes blLogoPass {
+  0%, 92% { transform: none; opacity: 1; }
+  96% { transform: translateX(8px); opacity: 0; }
+  96.01% { transform: translateX(-8px); opacity: 0; }
+  100% { transform: none; opacity: 1; }
+}
+
+@keyframes blLogoPassOnce {
+  0% { transform: none; opacity: 1; }
+  45% { transform: translateX(8px); opacity: 0; }
+  46% { transform: translateX(-8px); opacity: 0; }
+  100% { transform: none; opacity: 1; }
+}
+
+.tgmobile__menu-box .nav-logo .bl-logo {
+  height: 32px;
+}
+
+/* ---------- Motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* The bar would end at once and race through the list; leave it still instead. */
+  .bl-showcase .bl-showcase__bar i {
+    animation: none !important;
+  }
+}
