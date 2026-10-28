@@ -3,7 +3,6 @@ import Header from '@/components/Header';
 import SiteEffects from '@/components/SiteEffects';
 import Footer from '@/components/sections/Footer';
 import PageHero from '@/components/services/PageHero';
-import CredentialsStrip from '@/components/compliance/CredentialsStrip';
 import ServiceCards from '@/components/services/ServiceCards';
 import CtaBand from '@/components/services/CtaBand';
 import ServiceVisual, { PORTAL_SECTION } from '@/components/brand/ServiceVisuals';
@@ -55,7 +54,6 @@ export default async function ServicePage({ params }) {
           }
           visual={<ServiceVisual slug={service.slug} />}
         />
-        <CredentialsStrip />
 
         <section className="bl-section" id="how-it-works">
           <div className="container">

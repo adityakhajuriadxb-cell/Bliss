@@ -1,14 +1,12 @@
 import ElementorSection from '@/components/ElementorSection';
 import { SITE } from '@/config/site';
 import { SERVICES } from '@/config/services';
-import RegulatoryStatement from '@/components/compliance/RegulatoryStatement';
 
 const LEGAL_LINKS = [
   { label: 'Privacy policy', href: '/privacy-policy' },
   { label: 'Terms and conditions', href: '/terms-and-conditions' },
   { label: 'Cookie policy', href: '/cookie-policy' },
   { label: 'Request account deletion', href: '/request-account-deletion' },
-  { label: 'Compliance', href: '/compliance' },
 ];
 
 export default function Footer() {
@@ -25,7 +23,6 @@ export default function Footer() {
                       <img decoding="async" src={SITE.logo.footer} height="48" alt={SITE.legalName} />
                     </a>
                   </div>
-                  <RegulatoryStatement />
                   <ul className="list-wrap footer__social">
                     <li>
                       <a href={SITE.social.twitter}>

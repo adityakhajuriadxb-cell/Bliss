@@ -2,7 +2,6 @@ import Header from '@/components/Header';
 import SiteEffects from '@/components/SiteEffects';
 import Footer from '@/components/sections/Footer';
 import PageHero from '@/components/services/PageHero';
-import CredentialsStrip from '@/components/compliance/CredentialsStrip';
 import ServiceBento from '@/components/services/ServiceBento';
 import PlatformMap from '@/components/services/PlatformMap';
 import CtaBand from '@/components/services/CtaBand';
@@ -30,7 +29,6 @@ export default function ServicesPage() {
           intro="Take card payments, hold money in many currencies, send it across borders, and move between money and digital assets. Every rate and fee is shown before you confirm."
           visual={<SpeedBand tone="dark" className="bl-page-hero__band" data-parallax="0.12" data-parallax-axis="x" />}
         />
-        <CredentialsStrip />
 
         <section className="bl-section">
           <div className="container">

@@ -9,8 +9,8 @@ const FAQS = [
     a: 'Most transfers arrive in seconds. Some take longer, depending on the country and the receiving bank. If yours does, we tell you why and when to expect it.',
   },
   {
-    q: 'Is my money protected?',
-    a: 'Yes. Every transfer is encrypted and checked for fraud, and we work with regulated banking partners.',
+    q: 'How do you keep my money safe?',
+    a: 'Every transfer is encrypted and checked for fraud before it goes through.',
   },
   {
     q: 'Are there hidden fees?',

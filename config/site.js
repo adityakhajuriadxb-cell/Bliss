@@ -18,20 +18,11 @@ export const SITE = {
     footer: '/brand/logos/bliss-technology-lockup-reversed.svg', // corporate lockup next to the legal text
   },
 
-  // Regulatory details shown in the footer. Fill in your own registered company details.
-  legal: {
-    companyName: 'Bliss Technology',
-    jurisdiction: '[PROVINCE/STATE, COUNTRY]',
-    corporationNo: '[CORPORATION NO.]',
-    msbRegistrationNo: '[FINTRAC MSB REGISTRATION NO.]',
-  },
-
   // `children` become a dropdown on desktop and an expandable list in the mobile menu.
   nav: [
     { label: 'Home', href: '/' },
     { label: 'What we do', href: '/services', children: SERVICES.map((s) => ({ label: s.name, href: `/services/${s.slug}` })) },
     { label: 'About', href: '/#about' },
-    { label: 'Compliance', href: '/compliance' },
     { label: 'FAQ', href: '/#faq' },
   ],
 

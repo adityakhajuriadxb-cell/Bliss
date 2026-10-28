@@ -1,7 +1,6 @@
 import Header from '@/components/Header';
 import SiteEffects from '@/components/SiteEffects';
 import Hero from '@/components/sections/Hero';
-import CredentialsStrip from '@/components/compliance/CredentialsStrip';
 import Services from '@/components/sections/Services';
 import About from '@/components/sections/About';
 import TransferBanner from '@/components/sections/TransferBanner';
@@ -20,7 +19,6 @@ export default function HomePage() {
       <main className="fix">
         <div className="elementor elementor-24" data-elementor-type="wp-page" data-elementor-id="24">
           <Hero />
-          <CredentialsStrip />
           <Services />
           <About />
           <TransferBanner />

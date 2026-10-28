@@ -32,8 +32,7 @@ Brand settings (name, tagline, logos, legal details, nav) are in `config/site.js
 - `components/services/`: service sections: the homepage showcase (`ServiceShowcase.jsx`), the grouped tiles on /services (`ServiceBento.jsx`), the "More from Bliss" rows (`ServiceCards.jsx`), page hero, platform diagram and CTA band
 - `components/brand/Logo.jsx`: the header lockup as inline SVG so its blocks can animate (motion lives in `bliss.css` under "Logo in motion")
 - `components/brand/Portal.jsx` and `AppUI.jsx`: the web portal window (browser chrome, sidebar, page) and the UI pieces used in every service hero (`ServiceVisuals.jsx`) and "How it works" scroll story (`StepVisuals.jsx`)
-- `app/compliance/` and `config/compliance.js`: the Compliance page and the credentials strip shown under each hero. List only registrations and certifications Bliss Technology actually holds
-- `components/compliance/`: credentials strip, licence card and the regulatory statement (also used in the footer)
+- `docs/compliance-later/`: the Compliance page, credentials strip, licence cards and footer regulatory statement, taken off the site while licences are pending. See its README to restore them
 - `components/Header.jsx`: sticky header and mobile menu
 - `components/SiteEffects.jsx`: scroll-in animations (anime.js) and scroll-linked parallax (`data-parallax`, `data-scroll-reveal`), all off under reduced motion
 - `public/brand/`: the brand kit: tokens, component styles, fonts and logos

@@ -172,7 +172,7 @@ export const SERVICES = [
     summary: 'Hold, send and receive money in multiple currencies from one account.',
     headline: 'One account. Many currencies.',
     intro:
-      'Open e-money accounts for your business, or offer them to your own customers under your brand. Hold, send and receive money in multiple currencies, through Bliss and our licensed partners.',
+      'Open e-money accounts for your business, or offer them to your own customers under your brand. Hold, send and receive money in multiple currencies, all from one account.',
     steps: [
       { title: 'Open an account', text: 'Sign up and verify your business online.' },
       { title: 'Add money', text: 'Top up by bank transfer, card or incoming payments.' },
@@ -192,7 +192,7 @@ export const SERVICES = [
     faqs: [
       {
         q: 'Is Bliss a bank?',
-        a: 'No. Bliss is not a bank. We provide e-money accounts with our licensed partners.',
+        a: 'No. Bliss is not a bank. We provide e-money accounts for holding, sending and receiving money.',
       },
       {
         q: 'Which currencies can I hold?',
