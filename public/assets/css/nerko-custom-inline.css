@@ -1,0 +1,6 @@
+html:root { --tg-theme-primary: #009743}
+html:root { --tg-theme-secondary: #ffcb0a}
+html:root { --tg-gradient-1: #009743}
+html:root { --tg-gradient-2: #ffcb0a}
+[tg-theme=dark] body, [tg-theme=dark] .tgmobile__menu-box, [tg-theme=dark] .connect__modal .modal-content, [tg-theme=dark] .modal-backdrop, [tg-theme=dark] .sticky-menu::after { background-color: #051c14 !important}
+/*# sourceURL=nerko-custom-inline-css */
