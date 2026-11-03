@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
-import Header from '@/components/Header';
-import Footer from '@/components/sections/Footer';
+import Header from '@/components/site/Header';
+import Footer from '@/components/site/Footer';
+import PageHero from '@/components/site/PageHero';
 import { SITE } from '@/config/site';
 
 // Footer legal pages. Their text wasn't part of the saved homepage, so add your content here.
@@ -30,21 +31,13 @@ export default async function LegalPage({ params }) {
   return (
     <>
       <Header />
-      <main className="fix">
-        <section className="section-py-80" style={{ paddingTop: 180 }}>
-          <div className="container">
-            <div className="row justify-content-center">
-              <div className="col-xl-8 col-lg-10">
-                <div className="section__title text-center">
-                  <h2 className="title">{page.title}</h2>
-                </div>
-                {page.body ?? <p className="text-center">This page is coming soon.</p>}
-              </div>
-            </div>
-          </div>
+      <main>
+        <PageHero title={page.title} />
+        <section className="section legal">
+          <div className="wrap">{page.body ?? <p>This page is coming soon.</p>}</div>
         </section>
-        <Footer />
       </main>
+      <Footer />
     </>
   );
 }

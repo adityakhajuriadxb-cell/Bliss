@@ -1,14 +1,13 @@
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import Header from '@/components/Header';
-import SiteEffects from '@/components/SiteEffects';
-import Footer from '@/components/sections/Footer';
-import PageHero from '@/components/services/PageHero';
-import ServiceCards from '@/components/services/ServiceCards';
-import CtaBand from '@/components/services/CtaBand';
-import ServiceVisual, { PORTAL_SECTION } from '@/components/brand/ServiceVisuals';
-import Portal from '@/components/brand/Portal';
-import { STEP_SCREENS } from '@/components/brand/StepVisuals';
+import Header from '@/components/site/Header';
+import Footer from '@/components/site/Footer';
+import PageHero from '@/components/site/PageHero';
+import ScrollStory from '@/components/site/ScrollStory';
+import Accordion from '@/components/site/Accordion';
+import Closing from '@/components/home/Closing';
 import Icon from '@/components/brand/Icon';
+import { SERVICE_VISUALS } from '@/components/brand/ServiceVisuals';
 import { SERVICES, getService } from '@/config/services';
 import { SITE } from '@/config/site';
 
@@ -24,16 +23,34 @@ export async function generateMetadata({ params }) {
   return { title: `${service?.name} – ${SITE.name}`, description: service?.summary };
 }
 
+const CLOSING_PHOTO = {
+  'cross-border-payments': 'pairStreet',
+  'card-processing': 'workshopOwner',
+  'on-ramp': 'twoMenLaptop',
+  'off-ramp': 'manPhoneHills',
+  'emi-accounts': 'teamLaptop',
+  'iban-accounts': 'teamDashboard',
+};
+
 export default async function ServicePage({ params }) {
   const { slug } = await params;
   const service = getService(slug);
   if (!service) notFound();
-  const screens = STEP_SCREENS[service.slug] ?? [];
+  const visuals = SERVICE_VISUALS[service.slug];
+
+  const stories = service.steps.map((step, i) => ({
+    id: step.title,
+    label: step.title,
+    title: step.title,
+    text: step.text,
+    visualClass: 'story__visual--center',
+    visual: visuals.steps[i],
+  }));
 
   return (
     <>
       <Header />
-      <main className="fix">
+      <main>
         <PageHero
           crumbs={[
             { label: 'Home', href: '/' },
@@ -45,134 +62,83 @@ export default async function ServicePage({ params }) {
           intro={service.intro}
           actions={
             <>
-              <a href="#how-it-works" className="bl-btn bl-btn-primary bl-btn-lg">
-                See how it works
-                <Icon name="arrowRight" size={20} />
-              </a>
-              <span className="bl-pill">Launching soon</span>
+              <a href="#how-it-works" className="btn btn-mint btn-lg">See how it works</a>
+              <span className="btn btn-lg btn-line btn-static">Launching soon</span>
             </>
           }
-          visual={<ServiceVisual slug={service.slug} />}
+          visual={visuals.hero}
         />
 
-        <section className="bl-section" id="how-it-works">
-          <div className="container">
-            {/* Scroll story: the portal stays pinned while its page follows the step in view. */}
-            <div className="row bl-scrolly" data-scrolly data-active="0">
-              <div className="col-lg-5">
-                <div className="bl-section__head bl-section__head--start">
-                  <p className="bl-eyebrow bl-eyebrow--ink">How it works</p>
-                  <h2>Three steps. Every number shown.</h2>
-                </div>
-                <div className="bl-scrolly__device">
-                  <Portal section={PORTAL_SECTION[service.slug]}>
-                    <div className="bl-scrolly__screens">
-                      {screens.map((screen) => (
-                        <div className="bl-scrolly__screen" key={screen.title}>
-                          <p className="bl-portal__title">{screen.title}</p>
-                          <div className="bl-portal__stack">{screen.body}</div>
-                          <div className="bl-skeleton">
-                            <span />
-                            <span />
-                            <span />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </Portal>
-                </div>
-              </div>
-              <div className="col-lg-6 offset-lg-1">
-                <ol className="bl-scrolly__steps">
-                  {service.steps.map((step, i) => (
-                    <li className="bl-scrolly__step" data-step={i} key={step.title}>
-                      {screens[i] && (
-                        <Portal title={screens[i].title} section={PORTAL_SECTION[service.slug]} className="bl-scrolly__inline">
-                          {screens[i].body}
-                        </Portal>
-                      )}
-                      <span className="bl-scrolly__num">{String(i + 1).padStart(2, '0')}</span>
-                      <h3>{step.title}</h3>
-                      <p>{step.text}</p>
-                    </li>
-                  ))}
-                </ol>
-              </div>
+        <section className="section" id="how-it-works">
+          <div className="wrap">
+            <div className="offset-head" data-reveal>
+              <h2>Three steps.<br />Every number shown.</h2>
             </div>
+            <ScrollStory items={stories} />
           </div>
         </section>
 
-        <section className="bl-section bl-section--raised">
-          <div className="container">
-            <div className="bl-section__head">
-              <h2>What you get</h2>
-            </div>
-            <div className="row" data-anime="targets: > *; opacity:[0, 1]; translateX:[-24, 0]; onview: -200; delay: anime.stagger(60);">
-              {service.features.map((f) => (
-                <div className="col-lg-3 col-sm-6" key={f.title}>
-                  <div className="bl-feature">
-                    <span className="bl-feature__icon">
-                      <Icon name={f.icon} size={26} />
-                    </span>
-                    <h3>{f.title}</h3>
-                    <p>{f.text}</p>
-                  </div>
-                </div>
+        <section className="section section--soft">
+          <div className="wrap">
+            <h2 className="left-head" data-reveal>What you get</h2>
+            <ul className="features">
+              {service.features.map((feature) => (
+                <li key={feature.title} data-reveal>
+                  <span className="ui-round ui-round--mint"><Icon name={feature.icon} size={20} /></span>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.text}</p>
+                </li>
               ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="wrap faq">
+            <div data-reveal>
+              <h2>Who it’s for</h2>
+              <ul className="uses">
+                {service.useCases.map((use) => (
+                  <li key={use.title}>
+                    <span className="plan__tick"><Icon name="check" size={14} /></span>
+                    <div>
+                      <h3>{use.title}</h3>
+                      <p>{use.text}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="faq__main" data-reveal>
+              <h2>Questions</h2>
+              <Accordion items={service.faqs} />
             </div>
           </div>
         </section>
 
-        <section className="bl-section">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-5">
-                <div className="bl-section__head bl-section__head--start">
-                  <h2>Who it's for</h2>
-                </div>
-                <ul className="bl-uses">
-                  {service.useCases.map((u) => (
-                    <li key={u.title}>
-                      <Icon name="check" size={20} className="bl-icon--done" />
-                      <div>
-                        <h3>{u.title}</h3>
-                        <p>{u.text}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="col-lg-6 offset-lg-1">
-                <div className="bl-section__head bl-section__head--start">
-                  <h2>Questions</h2>
-                </div>
-                <div className="bl-faq">
-                  {service.faqs.map((f) => (
-                    <details key={f.q}>
-                      <summary>{f.q}</summary>
-                      <p>{f.a}</p>
-                    </details>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="bl-section bl-section--raised">
-          <div className="container">
-            <div className="bl-section__head bl-section__head--start">
+        <section className="section section--soft">
+          <div className="wrap">
+            <div className="left-head" data-reveal>
               <h2>More from Bliss</h2>
               <p>Every service runs on the same account.</p>
             </div>
-            <ServiceCards exclude={service.slug} />
+            <ul className="more">
+              {SERVICES.filter((s) => s.slug !== service.slug).map((s) => (
+                <li key={s.slug} data-reveal>
+                  <Link href={`/services/${s.slug}`}>
+                    <span className="ui-round ui-round--white"><Icon name={s.icon} size={20} /></span>
+                    <h3>{s.name}</h3>
+                    <p>{s.summary}</p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
-        <CtaBand title={`${service.name}, launching soon`} text={service.summary} />
-        <Footer />
+        <Closing title={`${service.name}, launching soon.`} text={service.summary} photo={CLOSING_PHOTO[service.slug]} />
       </main>
-      <SiteEffects />
+      <Footer />
     </>
   );
 }

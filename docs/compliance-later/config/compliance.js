@@ -2,7 +2,7 @@ import { SITE } from '@/config/site';
 
 // Compliance content for the credentials strip and the /compliance page.
 //
-// IMPORTANT: list only registrations, licences and certifications Bliss Technology
+// IMPORTANT: list only registrations, licences and certifications Bliss Technology LLC
 // actually holds today. Everything below comes from the regulatory statement already in
 // the site footer (SITE.legal). Have your compliance lead confirm it before launch, and
 // replace every [PLACEHOLDER].

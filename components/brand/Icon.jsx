@@ -21,6 +21,13 @@ const PATHS = {
   code: 'M8 8l-4 4 4 4M16 8l4 4-4 4',
   asset: 'M12 3l7.8 4.5v9L12 21l-7.8-4.5v-9L12 3ZM12 12l7.8-4.5M12 12v9M12 12 4.2 7.5',
   users: 'M16 19v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1M12.5 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM21 19v-1a4 4 0 0 0-3-3.9M15 4.1a3 3 0 0 1 0 5.8',
+  plus: 'M12 5v14M5 12h14',
+  minus: 'M5 12h14',
+  arrowLeft: 'M19 12H5M11 6l-6 6 6 6',
+  copy: 'M9 9h10a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1ZM16 9V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3',
+  swap: 'M4 8h13M13 4l4 4-4 4M20 16H7M11 12l-4 4 4 4',
+  more: 'M6 12h.01M12 12h.01M18 12h.01',
+  chevron: 'M7 10l5 5 5-5',
 };
 
 export default function Icon({ name, size = 24, className = '' }) {

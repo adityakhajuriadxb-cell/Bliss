@@ -1,37 +1,37 @@
-import Header from '@/components/Header';
-import SiteEffects from '@/components/SiteEffects';
-import Hero from '@/components/sections/Hero';
-import Services from '@/components/sections/Services';
-import About from '@/components/sections/About';
-import TransferBanner from '@/components/sections/TransferBanner';
-import Features from '@/components/sections/Features';
-import AppBanner from '@/components/sections/AppBanner';
-import WhyChooseUs from '@/components/sections/WhyChooseUs';
-import Roadmap from '@/components/sections/Roadmap';
-import Faq from '@/components/sections/Faq';
-import Cta from '@/components/sections/Cta';
-import Footer from '@/components/sections/Footer';
+import Header from '@/components/site/Header';
+import Footer from '@/components/site/Footer';
+import Hero from '@/components/home/Hero';
+import Benefits from '@/components/home/Benefits';
+import HowItWorks from '@/components/home/HowItWorks';
+import PhotoMarquee from '@/components/home/PhotoMarquee';
+import Capabilities from '@/components/home/Capabilities';
+import AccountTypes from '@/components/home/AccountTypes';
+import Audiences from '@/components/home/Audiences';
+import Plans from '@/components/home/Plans';
+import PromiseBand from '@/components/home/PromiseBand';
+import Explore from '@/components/home/Explore';
+import Faq from '@/components/home/Faq';
+import Closing from '@/components/home/Closing';
 
 export default function HomePage() {
   return (
     <>
       <Header />
-      <main className="fix">
-        <div className="elementor elementor-24" data-elementor-type="wp-page" data-elementor-id="24">
-          <Hero />
-          <Services />
-          <About />
-          <TransferBanner />
-          <Features />
-          <AppBanner />
-          <WhyChooseUs />
-          <Roadmap />
-          <Faq />
-          <Cta />
-          <Footer />
-        </div>
+      <main>
+        <Hero />
+        <Benefits />
+        <HowItWorks />
+        <PhotoMarquee />
+        <Capabilities />
+        <AccountTypes />
+        <Audiences />
+        <Plans />
+        <PromiseBand />
+        <Explore />
+        <Faq />
+        <Closing />
       </main>
-      <SiteEffects />
+      <Footer />
     </>
   );
 }

@@ -1,6 +1,6 @@
-# Bliss Technology — Brand Guidelines
+# Bliss Technology LLC — Brand Guidelines
 
-**Money, in motion.** Bliss Technology moves money across borders for people and businesses. It should feel as safe as a bank vault and as quick as a message. Every part of this system does both: **navy** says *you can trust this*, **mint** says *it's already moving*.
+**Money, in motion.** Bliss Technology LLC moves money across borders for people and businesses. It should feel as safe as a bank vault and as quick as a message. Every part of this system does both: **navy** says *you can trust this*, **mint** says *it's already moving*.
 
 ## Files in this folder
 
@@ -72,7 +72,7 @@ The wordmark is set in **Sora SemiBold**, lowercase, with tracking −2%. Lowerc
 - Close the speed cut, or put the blocks flush with each other. The forward lean *is* the motion.
 - Rotate the mark, put it in italics, add a gradient or a drop shadow, or put it in a circle.
 - Put the primary (navy) lockup on navy or on a busy photo. Use the reversed lockup.
-- Write "Bliss Tech", "BLISS" or "BlissTechnology". In copy, it's **Bliss** on first and every later mention; the legal name **Bliss Technology** goes in footers and contracts.
+- Write "Bliss Tech", "BLISS" or "BlissTechnology". In copy, it's **Bliss** on first and every later mention; the legal name **Bliss Technology LLC** goes in footers and contracts.
 
 ## Colour
 
@@ -198,6 +198,6 @@ Our voice stays the same; our tone changes with the moment.
 
 ### Boilerplate
 
-**Short (25 words):** Bliss Technology moves money across borders for people and businesses in 160+ countries: fast, transparent and regulated in every market where we operate.
+**Short (25 words):** Bliss Technology LLC moves money across borders for people and businesses in 160+ countries: fast, transparent and regulated in every market where we operate.
 
-**Long (60 words):** Bliss Technology is a global fintech company that makes moving money as simple as sending a message. People and businesses use Bliss to send, receive and hold money in dozens of currencies, with the real exchange rate and every fee shown up front. Most transfers arrive in seconds. Bliss is regulated in every market where it operates.
+**Long (60 words):** Bliss Technology LLC is a global fintech company that makes moving money as simple as sending a message. People and businesses use Bliss to send, receive and hold money in dozens of currencies, with the real exchange rate and every fee shown up front. Most transfers arrive in seconds. Bliss is regulated in every market where it operates.

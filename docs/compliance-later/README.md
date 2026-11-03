@@ -1,6 +1,6 @@
 # Compliance content (not on the site)
 
-Taken off the site on 2026-10-29: Bliss Technology's licences are still being processed in several countries, so the site makes no claims about registrations, licences or regulators until they are granted.
+Taken off the site on 2026-10-29: Bliss Technology LLC's licences are still being processed in several countries, so the site makes no claims about registrations, licences or regulators until they are granted.
 
 What's here, at the paths it had in the app:
 
@@ -11,7 +11,7 @@ What's here, at the paths it had in the app:
 
 To bring them back once licences are granted and your compliance lead has signed off the wording:
 
-1. Move the files back to the same paths, and paste `compliance.css` back into `bliss.css` (the small-screen rules go inside its `@media (max-width: 991.98px)` block).
+1. Move the files back to the same paths, and add `compliance.css` to `app/globals.css`. The site was redesigned after these were removed and no longer loads the old theme, so these components need restyling and their imports updating (`components/sections/` and `components/services/` are gone; the header and footer are now in `components/site/`).
 2. Restore `SITE.legal` in `config/site.js` (`companyName`, `jurisdiction`, `corporationNo`, `msbRegistrationNo`), which these files read.
 3. Add back `<CredentialsStrip />` under the hero on the homepage, /services and each service page; `<RegulatoryStatement />` in the footer; and the Compliance links in the nav and footer.
 4. Rewrite every credential to match the licences actually granted. The current text names FINTRAC, PCMLTFA and EEA/UK licensed partners.
